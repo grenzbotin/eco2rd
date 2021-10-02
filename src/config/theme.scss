@@ -1,0 +1,140 @@
+ // icons
+ @font-face {
+  font-family: 'icomoon';
+  src:  url('../assets/icons/icomoon.eot?6ql5l1');
+  src:  url('../assets/icons/icomoon.eot?6ql5l1#iefix') format('embedded-opentype'),
+    url('../assets/icons/icomoon.ttf?6ql5l1') format('truetype'),
+    url('../assets/icons/icomoon.woff?6ql5l1') format('woff'),
+    url('../assets/icons/icomoon.svg?6ql5l1#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+  content: "\f002";
+}
+.icon-check:before {
+  content: "\f00c";
+}
+.icon-close:before {
+  content: "\f00d";
+}
+.icon-remove:before {
+  content: "\f00d";
+}
+.icon-times:before {
+  content: "\f00d";
+}
+.icon-trash-o:before {
+  content: "\f014";
+}
+.icon-clock-o:before {
+  content: "\f017";
+}
+.icon-play-circle-o:before {
+  content: "\f01d";
+}
+.icon-times-circle-o:before {
+  content: "\f05c";
+}
+.icon-check-circle-o:before {
+  content: "\f05d";
+}
+.icon-bar-chart:before {
+  content: "\f080";
+}
+.icon-bar-chart-o:before {
+  content: "\f080";
+}
+.icon-cogs:before {
+  content: "\f085";
+}
+.icon-gears:before {
+  content: "\f085";
+}
+.icon-sign-in:before {
+  content: "\f090";
+}
+.icon-bolt:before {
+  content: "\f0e7";
+}
+.icon-flash:before {
+  content: "\f0e7";
+}
+.icon-arrow-circle-o-right:before {
+  content: "\f18e";
+}
+.icon-arrow-circle-o-left:before {
+  content: "\f190";
+}
+.icon-pause-circle-o:before {
+  content: "\f28c";
+}
+.icon-question-circle-o:before {
+  content: "\f29c";
+}
+.icon-user-circle-o:before {
+  content: "\f2be";
+}
+.icon-earth:before {
+  content: "\e9ca";
+}
+
+ 
+ 
+ // Set your brand colors
+ $purple: #8A4D76;
+ $pink: #FA7C91;
+ $brown: #757763;
+ $beige-light: #D0D1CD;
+ $beige-lighter: #EFF0EB;
+
+ $green-dark: #283618;
+ $green-light: #606C38;
+ $cream: #FEFAE0;
+ $sand-light: #DDA15E;
+ $sand-dark: #BC6C25;
+ 
+// Update Bulma's global variables
+ $family-serif: "Palatino Linotype", "Book Antiqua", "Palatino", serif;
+ $family-sans-serif: "MS Sans Serif", "Geneva", sans-serif;
+ $family-primary: $family-sans-serif;
+ $family-secondary: $family-serif;
+
+ $grey-dark: #202124;
+ $grey-light: $beige-light;
+ $primary: $green-light;
+ $link: $sand-light;
+ $background: $grey-dark;
+ $text: $beige-light;
+ $tabs-link-hover-color: $sand-light;
+ $tabs-link-focus-color: $sand-light;
+ $button-hover-color: $sand-light;
+ $button-focus-color: $sand-light;
+ $avatar-background: #363636;
+ 
+ // Update some of Bulma's component variables
+ $control-border-width: 2px;
+ $input-background-color: $beige-lighter;
+ $input-border-color: transparent;
+ $input-shadow: none;
+
+ $tooltip-background: #202124CC;
+ 
+ // Import the rest of Bulma
+ @import 'bulma/bulma.sass'

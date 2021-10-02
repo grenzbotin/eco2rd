@@ -1,0 +1,32 @@
+{
+  "name": "eco₂rd",
+  "description": "CO₂ footprint for web based data consumption",
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "webRequest",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "./background.js"
+  },
+  "action": {
+    "browser_style": true,
+    "default_popup": "index.html",
+    "default_icon": {
+      "48": "/images/logo48.png"
+    }
+  },
+  "icons": {
+    "16": "/images/logo16.png",
+    "32": "/images/logo32.png",
+    "48": "/images/logo48.png",
+    "128": "/images/logo128.png",
+    "512": "/images/logo512.png"
+  },
+  "version": "0.1",
+  "manifest_version": 3
+}

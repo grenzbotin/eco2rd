@@ -1,0 +1,35 @@
+@import '../../../config/theme.scss';
+
+.results {
+  margin-bottom: 1.5rem !important;
+}
+
+.result-part {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pie-column {
+  text-align: center;
+}
+
+.pie-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pie-subtitle {
+  font-size: 0.65rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+}
+
+.pie-wrapper {
+  height: 140px;
+}
+
+.no-data {
+  font-size: 0.7rem;
+  align-self: center;
+}

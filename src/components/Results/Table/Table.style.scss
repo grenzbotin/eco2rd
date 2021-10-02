@@ -1,0 +1,37 @@
+@import '../../../config/theme.scss';
+
+.table-wrapper {
+  max-height: 230px;
+  overflow: auto;
+}
+
+.consumption-table {
+  background-color: $background !important;
+  > thead > tr > th {
+    color: $sand-light;
+    font-family: $family-secondary;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      figure {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  > tbody > tr > td {
+    color: $beige-light;
+    font-size: 0.8rem;
+    vertical-align: middle;
+    word-break: break-all;
+    &.text-right {
+      text-align: right !important;
+    }
+    > button {
+      background-color: $tooltip-background;
+      border: 0;
+      font-size: 1rem !important;
+      color: $beige-light;
+    }
+  }
+}

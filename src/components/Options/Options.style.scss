@@ -1,0 +1,22 @@
+.options-wrapper {
+  height: fit-content;
+  width: fit-content;
+  position: absolute;
+  padding: 1rem;
+  right: 1.5rem;
+  z-index: 2;
+}
+
+.btn-open, .btn-close {
+  position: absolute;
+  right: 1.5rem;
+}
+
+.btn-close {
+  right: .5rem;
+  top: .5rem;
+}
+
+.button-icon {
+  margin-right: 0.5rem;
+}

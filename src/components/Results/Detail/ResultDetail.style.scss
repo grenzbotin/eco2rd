@@ -1,0 +1,26 @@
+@import '../../../config/theme.scss';
+
+.top-line {
+  display: flex;
+  align-items: center;
+  button:first-child {
+    margin-right: 1rem;
+  }
+  margin-bottom: 1.5rem;
+}
+
+.title-wrapper {
+  line-height: 0.9,
+}
+
+.detail-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $sand-light;
+  font-family: $family-secondary;
+}
+
+.detail-subtitle {
+  font-size: 0.65rem;
+  display: inline-block;
+}
