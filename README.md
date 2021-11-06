@@ -15,7 +15,7 @@ CO₂ footprint for web based data consumption
 
 #### System
 - [x] Reduce bundle size: Create own icon font based on used font aweseome icons instead of loading all
-- [] Reduce bundle size: asset overall size doesn't need to be 512x512
+- [x] Reduce bundle size: asset overall size doesn't need to be 512x512; instead: 64x64
 - [x] Use adequate system fonts instead of google fonts
 - [] Tests (Cypress?)
 - [] UI: Exchange Bulma with Mantine (https://mantine.dev/) (Maybe)
