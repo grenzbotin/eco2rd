@@ -3,29 +3,74 @@ const today = getBoD(new Date());
 
 const statsMock = {
   domain_1: {
-    today: {
-      size: 32321123,
-      lastDate: today,
-    },
     month: {
       size: 2323232303,
       lastDate: new Date(today).setDate(1),
+      visits: 23,
+      external: {
+        "www.a.com": 3232,
+        "www.b.com": 2312,
+        "www.c.com": 2312,
+        "www.d.com": 2312,
+        "www.e.com": 2312,
+        "www.f.com": 2312,
+        "www.g.com": 2312,
+        "www.h.com": 2312,
+        "www.i.com": 2312,
+        "www.j.com": 2312,
+      },
     },
     total: {
       size: 232323232323232,
+      visits: 433,
+      external: {
+        "www.a.com": 3232,
+        "www.b.com": 2312,
+        "www.c.com": 2312,
+        "www.d.com": 2312,
+        "www.e.com": 2312,
+        "www.f.com": 2312,
+        "www.g.com": 2312,
+        "www.h.com": 2312,
+        "www.i.com": 2312,
+        "www.j.com": 2312,
+      },
     },
   },
   domain_2: {
     today: {
       size: 32321123,
       lastDate: today,
+      visits: 23,
+      external: {
+        "www.a.com": 3232,
+        "www.b.com": 2312,
+        "www.c.com": 2312,
+        "www.d.com": 2312,
+        "www.e.com": 2312,
+        "www.f.com": 2312,
+        "www.g.com": 2312,
+        "www.h.com": 2312,
+        "www.i.com": 2312,
+        "www.j.com": 2312,
+      },
     },
     month: {
       size: 2323232303,
       lastDate: new Date(today).setDate(1),
+      visits: 23,
+      external: {
+        "www.a.com": 32332,
+        "www.b.com": 23132,
+      },
     },
     total: {
       size: 232323232323232,
+      visits: 23,
+      external: {
+        "www.a.com": 323332,
+        "www.b.com": 231332,
+      },
     },
   },
   domain_3: {

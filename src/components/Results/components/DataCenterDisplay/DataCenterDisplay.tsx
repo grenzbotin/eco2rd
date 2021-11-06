@@ -1,5 +1,5 @@
-import Logo from "../Logo";
-import { getDataCenterType } from "../Results/helpers";
+import Logo from "../../../Logo";
+import { getDataCenterType } from "../../helpers";
 import "./DataCenterDisplay.style.scss";
 
 const DataCenterDisplay = ({
@@ -23,7 +23,10 @@ const DataCenterDisplay = ({
       <Logo type={typeInformation.icon} width={30} height={30} />
       <div>
         <b>{renderedText}</b>
-        <span>(last updated: {new Date(timestamp).toLocaleDateString()})</span>
+        <span>
+          (last updated:{" "}
+          {timestamp ? new Date(timestamp).toLocaleDateString() : "unknown"})
+        </span>
       </div>
     </div>
   );

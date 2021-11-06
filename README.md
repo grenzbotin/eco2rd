@@ -5,8 +5,8 @@ CO₂ footprint for web based data consumption
 #### Content
 - [] Show CO₂ equivalent for cards, smartphone battery powering, etc
 - [x] Show details when clicking on node in pie charts
-- [] Show page visits (today, month, total)
-- [] Show page speed details
+- [x] Show page visits (today, month, total)
+- [x] Show amount and data details of non-origin resources that got fetched on page load
 - [] Show errors
 - [] Add localisation
 
@@ -15,10 +15,13 @@ CO₂ footprint for web based data consumption
 
 #### System
 - [x] Reduce bundle size: Create own icon font based on used font aweseome icons instead of loading all
+- [] Reduce bundle size: asset overall size doesn't need to be 512x512
 - [x] Use adequate system fonts instead of google fonts
 - [] Tests (Cypress?)
 - [] UI: Exchange Bulma with Mantine (https://mantine.dev/) (Maybe)
 
+#### Ideas
+- [] Show page speed details
 
 ### Sources
 
@@ -35,6 +38,10 @@ CO₂ footprint for web based data consumption
 #### Renewable Energy
 gCO₂eq/kWh for renewable energy sources
 - https://www.parliament.uk/globalassets/documents/post/postpn_383-carbon-footprint-electricity-generation.pdfs
+
+
+#### Page Visits
+A page visit is defined with the tab load status "completed".
 
 
 Bilder: 
@@ -70,7 +77,11 @@ boiler
 tree
 <div>Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
+refresh
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
+average
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 pausing / koala: https://lottiefiles.com/42410-sleeping-polar-bear
 waiting / cow: https://lottiefiles.com/52886-cow-eating-grass

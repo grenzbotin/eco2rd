@@ -8,7 +8,7 @@ import { DatacenterItem } from "../../../config/types";
 import { checkForDay } from "../helpers";
 import { useStats } from "../../../hooks/useStats";
 import { useUserSettings } from "../../../context/userContext";
-import DataCenterDisplay from "../../DataCenterDisplay";
+import DataCenterDisplay from "../components/DataCenterDisplay";
 
 const COLUMNS = [
   {

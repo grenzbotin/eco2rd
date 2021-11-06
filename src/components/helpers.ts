@@ -17,7 +17,9 @@ const convertBytes = (value: number): { divisor: number; unit: string } => {
 
 const convertKwh = (value: number): { divisor: number; unit: string } => {
   switch (true) {
-    case value < 100000:
+    case value < 1000:
+      return { divisor: 0.001, unit: "Wh" };
+    case 1000 < value && value < 100000:
       return { divisor: 1, unit: "kWh" };
     case value > 100000:
       return { divisor: 1000000, unit: "GWh" };

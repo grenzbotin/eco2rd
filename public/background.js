@@ -14,7 +14,12 @@ const LOCAL_KEY_DATACENTER = "datacenter";
 const LOCAL_KEY_STATS = "stats";
 const LOCAL_KEY_USER = "user";
 
-const EXCLUDED_URLS = ["chrome-extension", "localhost", "127.0.0.1"];
+const EXCLUDED_URLS = [
+  "chrome-extension",
+  "localhost",
+  "127.0.0.1",
+  "extensions",
+];
 const isChrome = typeof browser === "undefined";
 
 // -----------------------------------------------------------------
@@ -143,35 +148,80 @@ const getRequestSize = (requestData) => {
   return bytesTransfered;
 };
 
-const getRequestDetails = async (requestData) => {
-  if (isUrl(requestData.initiator || requestData.url)) {
-    const origin = getHostname(requestData.initiator || requestData.url);
+const getTabDetails = async (tabId, requestData, resolve, reject) => {
+  if (typeof tabId === "number" && tabId >= 0) {
+    chrome.tabs.get(tabId, async (tab) => {
+      if (isUrl(tab.url)) {
+        originalSource = getHostname(tab.url);
+        const subSource =
+          getHostname(requestData.url) || getHostname(requestData.initiator);
 
-    return {
-      size: getRequestSize(requestData),
-      origin,
-    };
+        resolve({
+          size: getRequestSize(requestData),
+          origin: originalSource,
+          sub: subSource !== originalSource ? subSource : null,
+        });
+      } else reject();
+    });
+  } else {
+    reject();
   }
-
-  return null;
 };
 
-const transformToStatistics = async ({ size, origin }) => {
-  let updatedStats;
+const getRequestDetails = (requestData) => {
+  return new Promise((resolve, reject) => {
+    if (isUrl(requestData.url) || isUrl(requestData.initiator)) {
+      getTabDetails(requestData.tabId, requestData, resolve, reject);
+    } else {
+      reject();
+    }
+  });
+};
 
+const transformToStatistics = async ({ size, origin, sub }) => {
+  let updatedStats;
   const statistics = (await getFromStorage(LOCAL_KEY_STATS)) || {};
 
   const { isToday, thisDay, isThisMonth, thisMonth } = checkForDay(
     statistics[origin]?.today?.lastDate
   );
 
+  // In evaluation, we add the external resources to the byte transfer by origin
+  // This will result in a slight miss-calculation for the actual data transfer co2 equivalent
+  // since the external sources could be hosted on other data center types than the origin
   const today = {
+    ...statistics[origin]?.today,
     size: isToday ? (statistics[origin]?.today?.size || 0) + size : size,
+    ...(sub && {
+      external: {
+        ...statistics[origin]?.today?.external,
+        [sub]: isToday
+          ? ((statistics[origin]?.today?.external &&
+              statistics[origin]?.today?.external[sub]) ||
+              0) + size
+          : (statistics[origin]?.today?.external &&
+              statistics[origin]?.today?.external[sub]) ||
+            0,
+      },
+    }),
     lastDate: thisDay,
   };
 
   const month = {
+    ...statistics[origin]?.month,
     size: isThisMonth ? (statistics[origin]?.month?.size || 0) + size : size,
+    ...(sub && {
+      external: {
+        ...statistics[origin]?.month?.external,
+        [sub]: isThisMonth
+          ? ((statistics[origin]?.month?.external &&
+              statistics[origin]?.month?.external[sub]) ||
+              0) + size
+          : (statistics[origin]?.month?.external &&
+              statistics[origin]?.month?.external[sub]) ||
+            0,
+      },
+    }),
     lastDate: thisMonth,
   };
 
@@ -182,7 +232,17 @@ const transformToStatistics = async ({ size, origin }) => {
       today,
       month,
       total: {
+        ...statistics[origin]?.total,
         size: (statistics[origin]?.total?.size || 0) + size,
+        ...(sub && {
+          external: {
+            ...statistics[origin]?.total?.external,
+            [sub]:
+              ((statistics[origin]?.total?.external &&
+                statistics[origin]?.total?.external[sub]) ||
+                0) + size,
+          },
+        }),
       },
     },
   };
@@ -220,8 +280,7 @@ const shouldRenewGWFData = (date) => {
   return true;
 };
 
-const fetchGreenStatus = async (origin) => {
-  // Only fetch if data entry is not in localstorage or is older than 7 days.
+const shouldFetchGWFData = async (origin) => {
   const dataCenter = (await getFromStorage(LOCAL_KEY_DATACENTER)) || {};
 
   const shouldLoadGWFData =
@@ -229,7 +288,17 @@ const fetchGreenStatus = async (origin) => {
     !dataCenter[origin] ||
     shouldRenewGWFData(dataCenter[origin]?.gwfTimestamp);
 
-  if (shouldLoadGWFData) {
+  return {
+    shouldFetch: shouldLoadGWFData,
+    green: dataCenter[origin]?.green,
+    dataCenter,
+  };
+};
+
+const fetchGreenStatus = async (origin) => {
+  const { shouldFetch, dataCenter } = await shouldFetchGWFData(origin);
+
+  if (shouldFetch) {
     chrome.action.setIcon({ path: `/images/datacenter_undefined.png` });
 
     return fetch(`${GREEN_WEB_FOUNDATION_API}/${origin}`)
@@ -263,23 +332,81 @@ const fetchGreenStatus = async (origin) => {
   return dataCenter[origin]?.green;
 };
 
+const increasePageVisits = async (origin) => {
+  let updatedStats;
+
+  const statistics = (await getFromStorage(LOCAL_KEY_STATS)) || {};
+
+  const { isToday, isThisMonth } = checkForDay(
+    statistics[origin]?.today?.lastDate
+  );
+
+  const today = {
+    ...statistics[origin]?.today,
+    visits: isToday ? (statistics[origin]?.today?.visits || 0) + 1 : 1,
+  };
+
+  const month = {
+    ...statistics[origin]?.month,
+    visits: isThisMonth ? (statistics[origin]?.month?.visits || 0) + 1 : 1,
+  };
+
+  updatedStats = {
+    ...statistics,
+    [origin]: {
+      ...statistics[origin],
+      today,
+      month,
+      total: {
+        ...statistics[origin]?.total,
+        visits: (statistics[origin]?.total?.visits || 0) + 1,
+      },
+    },
+  };
+
+  saveInStorage(LOCAL_KEY_STATS, updatedStats);
+};
+
 let activeTabId;
 let lastUrl;
+let lastActiveTabStatus;
 
 const getTabInfo = (tabId) => {
-  chrome.tabs.get(tabId, async (tab) => {
-    if (tab?.url && isUrl(tab.url) && lastUrl != tab.url) {
-      const origin = getHostname(tab.url);
-      if (origin) {
-        lastUrl = tab.url;
-        const green = await fetchGreenStatus(origin);
-        const icon = {
-          [true]: "undefined",
-          [green === false]: "red",
-          [green === true]: "green",
-        }.true;
-        chrome.action.setIcon({ path: `/images/datacenter_${icon}.png` });
-      }
+  getFromStorage(LOCAL_KEY_USER).then((res) => {
+    if (!res || !res.stoppedRecording) {
+      chrome.tabs.get(tabId, async (tab) => {
+        if (tab?.url && isUrl(tab.url) && lastUrl != tab.url) {
+          const origin = getHostname(tab.url);
+
+          if (origin) {
+            const icon = {
+              null: "undefined",
+              false: "red",
+              true: "green",
+            };
+            const { shouldFetch, green } = await shouldFetchGWFData(origin);
+
+            chrome.action.setIcon({
+              path: `/images/datacenter_${icon[green]}.png`,
+            });
+
+            if (
+              tab.status === "complete" &&
+              lastActiveTabStatus !== "complete"
+            ) {
+              await increasePageVisits(origin);
+              if (shouldFetch) {
+                lastUrl = tab.url;
+                const green = await fetchGreenStatus(origin);
+                chrome.action.setIcon({
+                  path: `/images/datacenter_${icon[green]}.png`,
+                });
+              }
+            }
+          }
+          lastActiveTabStatus = tab.status;
+        }
+      });
     }
   });
 };

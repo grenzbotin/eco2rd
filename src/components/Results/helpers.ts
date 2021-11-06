@@ -70,7 +70,7 @@ const getCo2EquivalentDetail = (
       ? utils.CARBON_PER_KWH_RENEWABLE
       : utils.CARBON_PER_KWH_GRID_REGION.WORLD_DEFAULT;
   const size = checkForDay(data[origin][scope]?.lastDate, scope)
-    ? data[origin][scope]?.size
+    ? data[origin][scope]?.size || 0
     : 0;
   const energyConsumption = getKWHPerGB(size, KWH_MODIFIER[kwhModifier]);
 
@@ -117,7 +117,7 @@ const getCo2Equivalent = (
           : utils.CARBON_PER_KWH_GRID_REGION.WORLD_DEFAULT;
 
       const size = checkForDay(data[l][scope]?.lastDate, scope)
-        ? data[l][scope]?.size
+        ? data[l][scope]?.size || 0
         : 0;
 
       const energyConsumption = getKWHPerGB(size, KWH_MODIFIER[kwhModifier]);

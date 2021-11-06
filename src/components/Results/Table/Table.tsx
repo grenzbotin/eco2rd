@@ -66,7 +66,7 @@ function ResultTable(): React.ReactElement {
 
   const others = detailData
     .sort((a, b) => b.value - a.value)
-    .slice(-(detailData.length - 5));
+    .slice(-(detailData.length - 4));
 
   return (
     <>

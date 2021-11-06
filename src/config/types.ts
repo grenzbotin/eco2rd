@@ -5,17 +5,27 @@ export interface DatacenterItem {
   green: boolean;
 }
 
+interface DataItemExternal {
+  [key: string]: number;
+}
+
 export interface DataItem {
   today: {
     size: number;
     lastDate: Date;
+    visits?: number;
+    external?: DataItemExternal;
   };
   month: {
     size: number;
     lastDate: Date;
+    visits?: number;
+    external?: DataItemExternal;
   };
   total: {
     size: number;
+    visits?: number;
+    external?: DataItemExternal;
   };
 }
 

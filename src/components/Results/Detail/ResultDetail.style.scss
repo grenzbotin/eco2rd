@@ -6,7 +6,7 @@
   button:first-child {
     margin-right: 1rem;
   }
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .title-wrapper {
@@ -23,4 +23,32 @@
 .detail-subtitle {
   font-size: 0.65rem;
   display: inline-block;
+}
+
+.details-wrapper {
+  max-height: 230px;
+  overflow: auto;
+}
+
+.visits-wrapper {
+  display: flex;
+  font-size: 0.7rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+  img:first-child {
+    margin-left: 4px;
+    margin-right: calc(0.5rem + 4px);
+  }
+  & .highlight-number{
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  & .highlight-number-2{
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  ul {
+    list-style-type: circle;
+    list-style-position: inside;
+  }
 }
