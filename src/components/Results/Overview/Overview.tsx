@@ -97,10 +97,12 @@ function Overview(): React.ReactElement {
               </Columns.Column>
             </Columns>
           ) : (
-            <>
-              <LottieIllustration type="waiting" height="140px" width="200px" />
-              <p className="no-data">Still collecting data..</p>
-            </>
+            <LottieIllustration
+              type="waiting"
+              height="140px"
+              width="200px"
+              subtitle="Still collecting data.."
+            />
           )}
         </>
       )}

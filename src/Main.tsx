@@ -14,7 +14,14 @@ function MainContentSwitch(): React.ReactElement {
   } = useUserSettings();
 
   const content = {
-    true: <LottieIllustration type="sleeping" />,
+    true: (
+      <LottieIllustration
+        height="281px"
+        width="290px"
+        type="sleeping"
+        subtitle="eco₂rd is in pause mode"
+      />
+    ),
     false: (
       <>
         <ScopeSelector />

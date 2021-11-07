@@ -17,7 +17,7 @@
 // https://gitlab.com/wholegrain/carbon-api-2-0/-/blob/master/includes/carbonapi.php
 // -----------------------------------------------------------------
 
-export const CARBON_PER_KWH_GRID_REGION = {
+export const CO2_PER_KWH_GRID_REGION = {
   AT: 94,
   BE: 174.0,
   BG: 424,
@@ -58,12 +58,12 @@ export const CARBON_PER_KWH_GRID_REGION = {
 // https://www.carbonbrief.org/factcheck-how-electric-vehicles-help-to-tackle-climate-change
 // -----------------------------------------------------------------
 
-const CARBON_PER_KM_CONVENTIONAL_CAR = {
+const CO2_GRAMM_PER_KM_CONVENTIONAL_CAR = {
   nsb: 165,
   csb: 258,
 };
 
-const CARBON_PER_KM_ELECTIC_CAR = {
+const CO2_GRAMM_PER_KM_ELECTIC_CAR = {
   EU_DEFAULT: {
     nsb: 40,
     csb: 109,
@@ -93,17 +93,17 @@ const CARBON_PER_KM_ELECTIC_CAR = {
 // -----------------------------------------------------------------
 // OTHER COMPARISONS
 // -----------------------------------------------------------------
+const CO2_GRAMM_TREE_ABSORBATION_PER_DAY = 85;
 const KWH_SMARTPHONE_CHARGED = 0.015;
 const KWH_1L_WATER_BOILED = 0.093;
-const TREE_CO2_GRAMM_ABSORBATION_PER_DAY = 85;
 
 export const utils = {
-  CARBON_PER_KWH_GRID_REGION,
-  CARBON_PER_KWH_RENEWABLE: 33.4,
+  CO2_PER_KWH_GRID_REGION,
+  CO2_PER_KWH_RENEWABLE: 33.4,
   CO2_GRAMS_TO_LITRES: 0.5562,
-  CARBON_PER_KM_CONVENTIONAL_CAR,
-  CARBON_PER_KM_ELECTIC_CAR,
+  CO2_GRAMM_PER_KM_CONVENTIONAL_CAR,
+  CO2_GRAMM_PER_KM_ELECTIC_CAR,
   KWH_SMARTPHONE_CHARGED,
   KWH_1L_WATER_BOILED,
-  TREE_CO2_GRAMM_ABSORBATION_PER_DAY,
+  CO2_GRAMM_TREE_ABSORBATION_PER_DAY,
 };

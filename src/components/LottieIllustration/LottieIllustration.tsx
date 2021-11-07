@@ -13,21 +13,26 @@ interface LottieIllustrationProps {
   type: "sleeping" | "waiting";
   height?: string;
   width?: string;
+  subtitle?: string;
 }
 
 function LottieIllustration({
   type,
-  height = "290px",
-  width = "290px",
+  height,
+  width,
+  subtitle,
 }: LottieIllustrationProps): React.ReactElement {
   return (
-    <Lottie
-      loop
-      play
-      animationData={ANIMATIONS[type]}
-      className="lottie-animation"
-      style={{ height, width }}
-    />
+    <>
+      <Lottie
+        loop
+        play
+        animationData={ANIMATIONS[type]}
+        className="lottie-animation"
+        style={{ height, width }}
+      />
+      {subtitle && <p className="sub">{subtitle}</p>}
+    </>
   );
 }
 

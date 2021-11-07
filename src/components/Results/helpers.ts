@@ -64,11 +64,11 @@ const getCo2EquivalentDetail = (
   if (!data[origin] || !data[origin][scope])
     return { co2DataCenter: 0, co2Transmission: 0, bytes: 0, kwhTotal: 0 };
 
-  const CO2_FACTOR_TRANSMISSION = utils.CARBON_PER_KWH_GRID_REGION[region];
+  const CO2_FACTOR_TRANSMISSION = utils.CO2_PER_KWH_GRID_REGION[region];
   const CO2_FACTOR_DATA_CENTER =
     dataCenter && dataCenter[origin]?.green
-      ? utils.CARBON_PER_KWH_RENEWABLE
-      : utils.CARBON_PER_KWH_GRID_REGION.WORLD_DEFAULT;
+      ? utils.CO2_PER_KWH_RENEWABLE
+      : utils.CO2_PER_KWH_GRID_REGION.WORLD_DEFAULT;
   const size = checkForDay(data[origin][scope]?.lastDate, scope)
     ? data[origin][scope]?.size || 0
     : 0;
@@ -107,14 +107,14 @@ const getCo2Equivalent = (
   let kwhTotal = 0;
   const detailData: DetailDataObj[] = [];
 
-  const CO2_FACTOR_TRANSMISSION = utils.CARBON_PER_KWH_GRID_REGION[region];
+  const CO2_FACTOR_TRANSMISSION = utils.CO2_PER_KWH_GRID_REGION[region];
 
   if (Object.keys(data).length > 0) {
     Object.keys(data).forEach((l) => {
       const CO2_FACTOR_DATA_CENTER =
         dataCenter && dataCenter[l]?.green
-          ? utils.CARBON_PER_KWH_RENEWABLE
-          : utils.CARBON_PER_KWH_GRID_REGION.WORLD_DEFAULT;
+          ? utils.CO2_PER_KWH_RENEWABLE
+          : utils.CO2_PER_KWH_GRID_REGION.WORLD_DEFAULT;
 
       const size = checkForDay(data[l][scope]?.lastDate, scope)
         ? data[l][scope]?.size || 0

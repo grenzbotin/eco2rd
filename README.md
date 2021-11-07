@@ -85,3 +85,4 @@ average
 
 pausing / koala: https://lottiefiles.com/42410-sleeping-polar-bear
 waiting / cow: https://lottiefiles.com/52886-cow-eating-grass
+pausing / panda: https://lottiefiles.com/37101-cute-little-panda-sleeping

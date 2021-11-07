@@ -151,6 +151,7 @@ const getRequestSize = (requestData) => {
 const getTabDetails = async (tabId, requestData, resolve, reject) => {
   if (typeof tabId === "number" && tabId >= 0) {
     chrome.tabs.get(tabId, async (tab) => {
+      if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
       if (isUrl(tab.url)) {
         originalSource = getHostname(tab.url);
         const subSource =
@@ -375,6 +376,7 @@ const getTabInfo = (tabId) => {
   getFromStorage(LOCAL_KEY_USER).then((res) => {
     if (!res || !res.stoppedRecording) {
       chrome.tabs.get(tabId, async (tab) => {
+        if (chrome.runtime.lastError) return;
         if (tab?.url && isUrl(tab.url) && lastUrl != tab.url) {
           const origin = getHostname(tab.url);
 
