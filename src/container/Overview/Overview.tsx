@@ -5,7 +5,6 @@ import { REFRESH_RATE_IN_SECONDS } from "config/constants";
 import { useUserSettings } from "context/userContext";
 import { useStats } from "hooks/useStats";
 import { useDataCenter } from "hooks/useDataCenter";
-import { getConvertedBytes, getConvertedKwh } from "components/helpers";
 import LottieIllustration from "components/LottieIllustration";
 import LoadingIndicator from "components/LoadingIndicator";
 import {
@@ -14,8 +13,8 @@ import {
   getGreenDataCenterUsage,
   getAbsolutePercentageOfGreenHosted,
 } from "../helpers";
-import PieChart from "../components/PieChart";
-import UsageData from "../components/UsageData";
+import PieChart from "components/PieChart";
+import UsageData from "components/UsageData";
 
 import "./Overview.style.scss";
 
@@ -53,20 +52,11 @@ function Overview(): React.ReactElement {
         <LoadingIndicator />
       ) : (
         <>
-          <Columns breakpoint="mobile" className="results">
-            <Columns.Column size="one-third" className="result-part">
-              <UsageData
-                type="co2"
-                value={getConvertedMass(co2DataCenter + co2Transmission)}
-              />
-            </Columns.Column>
-            <Columns.Column size="one-third" className="result-part">
-              <UsageData type="download" value={getConvertedBytes(bytes)} />
-            </Columns.Column>
-            <Columns.Column size="one-third" className="result-part">
-              <UsageData type="electricity" value={getConvertedKwh(kwhTotal)} />
-            </Columns.Column>
-          </Columns>
+          <UsageData
+            co2={co2DataCenter + co2Transmission}
+            bytes={bytes}
+            kwhTotal={kwhTotal}
+          />
           {detailData.length > 2 ? (
             <Columns breakpoint="mobile">
               <Columns.Column size="half" className="pie-column">

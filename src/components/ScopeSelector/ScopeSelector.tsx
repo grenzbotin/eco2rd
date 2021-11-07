@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent } from "react";
 import { Tabs } from "react-bulma-components";
 
 import { SCOPES } from "config/constants";
@@ -22,6 +22,9 @@ function ScopeSelector(): React.ReactElement {
           active={content.value === scope}
           tabIndex={0}
           onClick={() => handleChange(content.value)}
+          onKeyUp={(e: KeyboardEvent<HTMLAnchorElement>) =>
+            (e.key === "Enter" || e.key === " ") && handleChange(content.value)
+          }
         >
           {content.name}
         </Tabs.Tab>

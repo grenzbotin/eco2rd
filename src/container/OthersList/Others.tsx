@@ -8,7 +8,7 @@ import { useDataCenter } from "hooks/useDataCenter";
 import { useStats } from "hooks/useStats";
 import { getConvertedBytes, getConvertedKwh } from "components/helpers";
 import { getCo2Equivalent, getConvertedMass } from "../helpers";
-import consumptionTypes from "../consumptionTypes";
+import consumptionTypes from "config/consumptionTypes";
 
 import "./Others.style.scss";
 

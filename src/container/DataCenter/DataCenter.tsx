@@ -7,7 +7,7 @@ import { useUserSettings } from "context/userContext";
 import { useDataCenter } from "hooks/useDataCenter";
 import { useStats } from "hooks/useStats";
 import { checkForDay } from "../helpers";
-import DataCenterDisplay from "../components/DataCenterDisplay";
+import DataCenterDisplay from "components/DataCenterDisplay";
 import { shortenUrl } from "helpers";
 
 import "./DataCenter.style.scss";

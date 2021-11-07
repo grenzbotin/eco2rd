@@ -93,9 +93,11 @@ const CO2_GRAMM_PER_KM_ELECTIC_CAR = {
 // -----------------------------------------------------------------
 // OTHER COMPARISONS
 // -----------------------------------------------------------------
-const CO2_GRAMM_TREE_ABSORBATION_PER_DAY = 85;
-const KWH_SMARTPHONE_CHARGED = 0.015;
+// Source: average: 10kg / per year  https://a.plant-for-the-planet.org/wp-content/uploads/2020/12/faktenblatt_baeume_co2.pdf
+const CO2_GRAMM_TREE_ABSORBATION_PER_DAY = 27.4;
+const KWH_SMARTPHONE_CHARGED = 0.01;
 const KWH_1L_WATER_BOILED = 0.093;
+const BYTES_1MIN_4K_STREAM = 233 * 1000000;
 
 export const utils = {
   CO2_PER_KWH_GRID_REGION,
@@ -106,4 +108,5 @@ export const utils = {
   KWH_SMARTPHONE_CHARGED,
   KWH_1L_WATER_BOILED,
   CO2_GRAMM_TREE_ABSORBATION_PER_DAY,
+  BYTES_1MIN_4K_STREAM,
 };

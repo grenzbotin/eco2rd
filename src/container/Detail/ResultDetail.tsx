@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Columns } from "react-bulma-components";
+import { Button } from "react-bulma-components";
 
 import { RESULT_ROUTE_OVERVIEW } from "config/routes";
 import { useRoute } from "context/routeContext";
@@ -9,14 +9,10 @@ import { useStats } from "hooks/useStats";
 import refreshImage from "assets/refresh.webp";
 import averageImage from "assets/average.webp";
 import { shortenUrl } from "helpers";
-import {
-  getConvertedBytes,
-  getConvertedKwh,
-  getRounded,
-} from "components/helpers";
-import { getCo2EquivalentDetail, getConvertedMass } from "../helpers";
-import UsageData from "../components/UsageData";
-import DataCenterDisplay from "../components/DataCenterDisplay";
+import { getConvertedBytes, getRounded } from "components/helpers";
+import { getCo2EquivalentDetail } from "../helpers";
+import UsageData from "components/UsageData";
+import DataCenterDisplay from "components/DataCenterDisplay";
 
 import "./ResultDetail.style.scss";
 
@@ -62,21 +58,11 @@ function ResultDetail(): React.ReactElement {
         </div>
       </div>
       <div className="details-wrapper">
-        <Columns breakpoint="mobile">
-          <Columns.Column size="one-third" className="result-part">
-            <UsageData
-              type="co2"
-              value={getConvertedMass(co2DataCenter + co2Transmission)}
-            />
-          </Columns.Column>
-          <Columns.Column size="one-third" className="result-part">
-            <UsageData type="download" value={getConvertedBytes(bytes)} />
-          </Columns.Column>
-          <Columns.Column size="one-third" className="result-part">
-            <UsageData type="electricity" value={getConvertedKwh(kwhTotal)} />
-          </Columns.Column>
-        </Columns>
-
+        <UsageData
+          co2={co2DataCenter + co2Transmission}
+          bytes={bytes}
+          kwhTotal={kwhTotal}
+        />
         <div className="visits-wrapper">
           <img src={refreshImage} height={22} width={22} alt="refresh symbol" />
           <div>

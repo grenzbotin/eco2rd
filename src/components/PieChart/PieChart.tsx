@@ -19,6 +19,7 @@ function PieChart({
 }): React.ReactElement {
   const { setRoute } = useRoute();
   const [isHovered, setIsHovered] = useState<boolean>(false);
+
   const restValue = data.slice(-(data.length - 5)).reduce((sum, current) => {
     return sum + current.value;
   }, 0);
