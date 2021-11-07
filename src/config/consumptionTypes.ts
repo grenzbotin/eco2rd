@@ -27,7 +27,7 @@ const TYPES = {
         alt: "Tree illustration",
         key: "tree",
         convert: (gramm: number): string =>
-          `one tree would be busy for ${getRounded(
+          `one average tree would be busy for ${getRounded(
             gramm / utils.CO2_GRAMM_TREE_ABSORBATION_PER_DAY
           )} days to absorb it.`,
       },
@@ -36,9 +36,9 @@ const TYPES = {
         alt: "Car",
         key: "car",
         convert: (bytes: number): string =>
-          `a person would have emitted the same driving for ${getRounded(
+          `we have the same amount of CO₂ as a conventional, fuel based car would have emitted driving for ${getRounded(
             bytes / utils.CO2_GRAMM_PER_KM_CONVENTIONAL_CAR.nsb
-          )}km with a conventional, fuel based car (nsb).`,
+          )}km.`,
       },
     ],
   },
