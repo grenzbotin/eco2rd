@@ -1,22 +1,23 @@
 import React, { useEffect } from "react";
 import { Columns } from "react-bulma-components";
 
-import { REFRESH_RATE_IN_SECONDS } from "../../../config/constants";
-import "./Overview.style.scss";
+import { REFRESH_RATE_IN_SECONDS } from "config/constants";
+import { useUserSettings } from "context/userContext";
+import { useStats } from "hooks/useStats";
+import { useDataCenter } from "hooks/useDataCenter";
+import { getConvertedBytes, getConvertedKwh } from "components/helpers";
+import LottieIllustration from "components/LottieIllustration";
+import LoadingIndicator from "components/LoadingIndicator";
 import {
   getCo2Equivalent,
   getConvertedMass,
   getGreenDataCenterUsage,
   getAbsolutePercentageOfGreenHosted,
 } from "../helpers";
-import { getConvertedBytes, getConvertedKwh } from "../../helpers";
 import PieChart from "../components/PieChart";
-import { useUserSettings } from "../../../context/userContext";
-import { useStats } from "../../../hooks/useStats";
-import { useDataCenter } from "../../../hooks/useDataCenter";
 import UsageData from "../components/UsageData";
-import LottieIllustration from "../../LottieIllustration";
-import LoadingIndicator from "../../LoadingIndicator";
+
+import "./Overview.style.scss";
 
 function Overview(): React.ReactElement {
   const { settings } = useUserSettings();

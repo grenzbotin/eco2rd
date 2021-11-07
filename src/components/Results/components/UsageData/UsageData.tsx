@@ -1,5 +1,6 @@
-import "./UsageData.style.scss";
 import consumptionTypes from "../../consumptionTypes";
+
+import "./UsageData.style.scss";
 
 function UsageData({
   type,

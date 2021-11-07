@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Box, Button, Form, Icon } from "react-bulma-components";
 
-import regions from "../../config/regions";
-import "./Options.style.scss";
-import { useUserSettings } from "../../context/userContext";
+import regions from "config/regions";
+import { useUserSettings } from "context/userContext";
+import { KWH_MODIFIER_OPTIONS } from "config/energy";
+import { useStats } from "hooks/useStats";
 
-import { KWH_MODIFIER_OPTIONS } from "../../config/energy";
 import { getRoughSizeOfObject, sortByKey } from "./helpers";
 import { getConvertedBytes } from "../helpers";
-import { useStats } from "../../hooks/useStats";
+
+import "./Options.style.scss";
 
 const { Field, Control, Label, Select } = Form;
 

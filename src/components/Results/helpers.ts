@@ -1,4 +1,4 @@
-import { utils } from "../../config/carbon";
+import { utils } from "config/carbon";
 import {
   GIGA_BYTE_IN_BYTES,
   PERCENTAGE_OF_ENERGY_IN_DATACENTER,
@@ -6,9 +6,10 @@ import {
   SCOPE_MONTH,
   SCOPE_TODAY,
   SCOPE_TOTAL,
-} from "../../config/constants";
-import { KWH_MODIFIER } from "../../config/energy";
-import { DatacenterObj, DataObj, DetailDataObj } from "../../config/types";
+} from "config/constants";
+import { KWH_MODIFIER } from "config/energy";
+import { DatacenterObj, DataObj, DetailDataObj } from "config/types";
+import { shortenUrl } from "helpers";
 import { getRounded } from "../helpers";
 
 const convertMass = (value: number): { divisor: number; unit: string } => {
@@ -138,7 +139,7 @@ const getCo2Equivalent = (
       if (co2DC + co2T > 0) {
         detailData.push({
           id: l,
-          label: l.replace("www.", ""),
+          label: shortenUrl(l),
           value: co2DC + co2T,
           kwhTotal: energyConsumption,
           bytes: size,

@@ -1,6 +1,6 @@
-import co2Image from "../../assets/co2.webp";
-import downloadImage from "../../assets/download.webp";
-import electricityImage from "../../assets/electricity.webp";
+import co2Image from "assets/co2.webp";
+import downloadImage from "assets/download.webp";
+import electricityImage from "assets/electricity.webp";
 
 const TYPES = {
   co2: {

@@ -8,8 +8,9 @@ import {
   useState,
   Dispatch,
 } from "react";
-import { RESULT_ROUTE_OVERVIEW } from "../config/routes";
-import { Route, RouteContextType } from "../config/types";
+
+import { RESULT_ROUTE_OVERVIEW } from "config/routes";
+import { Route, RouteContextType } from "config/types";
 
 export const initialRouteData = {
   type: RESULT_ROUTE_OVERVIEW,

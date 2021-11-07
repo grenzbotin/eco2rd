@@ -1,7 +1,7 @@
+import { useRoute } from "context/routeContext";
 import Overview from "./Overview";
-import { useRoute } from "../../context/routeContext";
 import ResultDetail from "./Detail";
-import Table from "./Table";
+import Table from "./Others";
 import DataCenter from "./DataCenter";
 
 const getChildByOrigin = (origin?: string) => {

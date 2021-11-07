@@ -1,18 +1,24 @@
 import React from "react";
 import { Button, Columns } from "react-bulma-components";
 
-import { RESULT_ROUTE_OVERVIEW } from "../../../config/routes";
-import { useRoute } from "../../../context/routeContext";
-import { useUserSettings } from "../../../context/userContext";
-import { useDataCenter } from "../../../hooks/useDataCenter";
-import { useStats } from "../../../hooks/useStats";
-import { getConvertedBytes, getConvertedKwh, getRounded } from "../../helpers";
+import { RESULT_ROUTE_OVERVIEW } from "config/routes";
+import { useRoute } from "context/routeContext";
+import { useUserSettings } from "context/userContext";
+import { useDataCenter } from "hooks/useDataCenter";
+import { useStats } from "hooks/useStats";
+import refreshImage from "assets/refresh.webp";
+import averageImage from "assets/average.webp";
+import { shortenUrl } from "helpers";
+import {
+  getConvertedBytes,
+  getConvertedKwh,
+  getRounded,
+} from "components/helpers";
 import { getCo2EquivalentDetail, getConvertedMass } from "../helpers";
 import UsageData from "../components/UsageData";
-import "./ResultDetail.style.scss";
 import DataCenterDisplay from "../components/DataCenterDisplay";
-import refreshImage from "../../../assets/refresh.webp";
-import averageImage from "../../../assets/average.webp";
+
+import "./ResultDetail.style.scss";
 
 function ResultDetail(): React.ReactElement {
   const { settings } = useUserSettings();
@@ -108,7 +114,7 @@ function ResultDetail(): React.ReactElement {
                         stats[origin][settings.scope]?.external[key];
                       return (
                         <li key={key}>
-                          {key.replace("www.", "")}:{" "}
+                          {shortenUrl(key)}:{" "}
                           {getConvertedBytes(bytesPerResource)} (
                           {getRounded((bytesPerResource / bytes) * 100)}%)
                         </li>

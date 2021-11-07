@@ -1,10 +1,10 @@
 import React from "react";
 
-import logo from "./assets/logo_word_mark.svg";
-import { UserSettingProvider } from "./context/userContext";
+import logo from "assets/logo_word_mark.svg";
+import { UserSettingProvider } from "context/userContext";
 import Main from "./Main";
 
-import "./config/theme.scss";
+import "config/theme.scss";
 import "./App.style.scss";
 
 function App(): React.ReactElement {

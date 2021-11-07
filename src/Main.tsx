@@ -1,12 +1,12 @@
 import React from "react";
 
-import Options from "./components/Options";
-import Result from "./components/Results";
-import ScopeSelector from "./components/ScopeSelector";
-import { useUserSettings } from "./context/userContext";
-import LottieIllustration from "./components/LottieIllustration";
-import LoadingIndicator from "./components/LoadingIndicator";
-import { RouteProvider } from "./context/routeContext";
+import Options from "components/Options";
+import Result from "components/Results";
+import ScopeSelector from "components/ScopeSelector";
+import LottieIllustration from "components/LottieIllustration";
+import LoadingIndicator from "components/LoadingIndicator";
+import { RouteProvider } from "context/routeContext";
+import { useUserSettings } from "context/userContext";
 
 function MainContentSwitch(): React.ReactElement {
   const {

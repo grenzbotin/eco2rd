@@ -1,15 +1,16 @@
 import { Button, Table } from "react-bulma-components";
 
-import { RESULT_ROUTE_OVERVIEW } from "../../../config/routes";
-import { useRoute } from "../../../context/routeContext";
-import { useUserSettings } from "../../../context/userContext";
-import { useDataCenter } from "../../../hooks/useDataCenter";
-import { useStats } from "../../../hooks/useStats";
-import { getConvertedBytes, getConvertedKwh } from "../../helpers";
+import { RESULT_ROUTE_OVERVIEW } from "config/routes";
+import { DetailDataObj } from "config/types";
+import { useRoute } from "context/routeContext";
+import { useUserSettings } from "context/userContext";
+import { useDataCenter } from "hooks/useDataCenter";
+import { useStats } from "hooks/useStats";
+import { getConvertedBytes, getConvertedKwh } from "components/helpers";
 import { getCo2Equivalent, getConvertedMass } from "../helpers";
-import "./Table.style.scss";
 import consumptionTypes from "../consumptionTypes";
-import { DetailDataObj } from "../../../config/types";
+
+import "./Others.style.scss";
 
 const COLUMNS = [
   {

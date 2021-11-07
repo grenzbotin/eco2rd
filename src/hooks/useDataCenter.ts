@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import { storageKeys } from "../config/constants";
-import { DatacenterObj, VoidFunction } from "../config/types";
-import { getFromStorage } from "../helpers";
+
+import { storageKeys } from "config/constants";
+import { DatacenterObj, VoidFunction } from "config/types";
+import { getFromStorage } from "helpers";
+
 import dataCenterMock from "./dataCenterMock";
 
 const initialData =

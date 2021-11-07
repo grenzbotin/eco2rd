@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import { storageKeys } from "../config/constants";
-import { DataObj, VoidFunction } from "../config/types";
-import { getFromStorage, saveInStorage } from "../helpers";
+
+import { storageKeys } from "config/constants";
+import { DataObj, VoidFunction } from "config/types";
+import { getFromStorage, saveInStorage } from "helpers";
+
 import statsMock from "./statsMock";
 
 const initialData = process.env.NODE_ENV === "development" ? statsMock : {};

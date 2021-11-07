@@ -1,8 +1,8 @@
 import React from "react";
 import { Tabs } from "react-bulma-components";
-import { SCOPES } from "../../config/constants";
 
-import { useUserSettings } from "../../context/userContext";
+import { SCOPES } from "config/constants";
+import { useUserSettings } from "context/userContext";
 
 function ScopeSelector(): React.ReactElement {
   const {

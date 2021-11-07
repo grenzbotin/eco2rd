@@ -2,10 +2,11 @@ import { ResponsivePie } from "@nivo/pie";
 import { Box } from "react-bulma-components";
 import { memo, useState } from "react";
 
+import { GRAPH_COLORS } from "config/constants";
+import { DetailDataObj } from "config/types";
+import { useRoute } from "context/routeContext";
+
 import "./PieChart.style.scss";
-import { GRAPH_COLORS } from "../../../../config/constants";
-import { DetailDataObj } from "../../../../config/types";
-import { useRoute } from "../../../../context/routeContext";
 
 function PieChart({
   data,

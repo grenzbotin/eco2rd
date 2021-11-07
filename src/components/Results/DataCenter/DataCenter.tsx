@@ -1,14 +1,16 @@
 import { Button, Table } from "react-bulma-components";
 
-import { RESULT_ROUTE_OVERVIEW } from "../../../config/routes";
-import { useRoute } from "../../../context/routeContext";
-import { useDataCenter } from "../../../hooks/useDataCenter";
-import "./DataCenter.style.scss";
-import { DatacenterItem } from "../../../config/types";
+import { RESULT_ROUTE_OVERVIEW } from "config/routes";
+import { DatacenterItem } from "config/types";
+import { useRoute } from "context/routeContext";
+import { useUserSettings } from "context/userContext";
+import { useDataCenter } from "hooks/useDataCenter";
+import { useStats } from "hooks/useStats";
 import { checkForDay } from "../helpers";
-import { useStats } from "../../../hooks/useStats";
-import { useUserSettings } from "../../../context/userContext";
 import DataCenterDisplay from "../components/DataCenterDisplay";
+import { shortenUrl } from "helpers";
+
+import "./DataCenter.style.scss";
 
 const COLUMNS = [
   {
@@ -30,7 +32,7 @@ function TableRow({
 
   return (
     <tr key={url}>
-      <td>{url}</td>
+      <td>{shortenUrl(url)}</td>
       <td>
         <DataCenterDisplay
           status={item?.green}

@@ -1,5 +1,5 @@
+import logo from "assets/logo.svg";
 import "./LoadingIndicator.scss";
-import logo from "../../assets/logo.svg";
 
 function LoadingIndicator(): React.ReactElement {
   return (

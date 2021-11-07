@@ -162,10 +162,10 @@ const getTabDetails = async (tabId, requestData, resolve, reject) => {
           origin: originalSource,
           sub: subSource !== originalSource ? subSource : null,
         });
-      } else reject();
+      } else reject(new Error("requested tab url was not valid"));
     });
   } else {
-    reject();
+    reject(new Error("couldn't find requested tab"));
   }
 };
 
@@ -174,7 +174,7 @@ const getRequestDetails = (requestData) => {
     if (isUrl(requestData.url) || isUrl(requestData.initiator)) {
       getTabDetails(requestData.tabId, requestData, resolve, reject);
     } else {
-      reject();
+      reject(new Error("requested url was not valid"));
     }
   });
 };

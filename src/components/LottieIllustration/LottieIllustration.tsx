@@ -1,8 +1,8 @@
 import Lottie from "react-lottie-player/dist/LottiePlayerLight";
 
+import sleeping from "assets/sleeping.json";
+import waiting from "assets/waiting.json";
 import "./LottieIllustration.style.scss";
-import sleeping from "../../assets/sleeping.json";
-import waiting from "../../assets/waiting.json";
 
 const ANIMATIONS = {
   sleeping: sleeping,

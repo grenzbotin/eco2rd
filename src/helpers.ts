@@ -38,4 +38,6 @@ const saveInStorage = (key: string, value: StorageData): Promise<unknown> => {
   });
 };
 
-export { logIt, getFromStorage, saveInStorage };
+const shortenUrl = (url: string): string => url.replace("www.", "");
+
+export { logIt, getFromStorage, saveInStorage, shortenUrl };

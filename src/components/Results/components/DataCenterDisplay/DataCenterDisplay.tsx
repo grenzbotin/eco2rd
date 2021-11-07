@@ -1,5 +1,6 @@
-import Logo from "../../../Logo";
+import Logo from "components/Logo";
 import { getDataCenterType } from "../../helpers";
+
 import "./DataCenterDisplay.style.scss";
 
 const DataCenterDisplay = ({

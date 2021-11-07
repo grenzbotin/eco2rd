@@ -8,9 +8,10 @@ import {
   useMemo,
   useState,
 } from "react";
-import { DEFAULTS, storageKeys } from "../config/constants";
-import { UserObj, UserSettingContextType } from "../config/types";
-import { getFromStorage, saveInStorage } from "../helpers";
+
+import { DEFAULTS, storageKeys } from "config/constants";
+import { UserObj, UserSettingContextType } from "config/types";
+import { getFromStorage, saveInStorage } from "helpers";
 
 export const initialUserData = {
   co2Region: DEFAULTS.co2Region,
