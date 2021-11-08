@@ -1,7 +1,10 @@
 import { utils } from "config/carbon";
 import { GIGA_BYTE_IN_BYTES } from "config/constants";
 
-const getRounded = (value: number): number => Math.round(value * 100) / 100;
+const getRounded = (value: number, precision?: number): number => {
+  const multiplier = Math.pow(10, precision || 2);
+  return Math.round(value * multiplier) / multiplier;
+};
 
 const convertBytes = (value: number): { divisor: number; unit: string } => {
   switch (true) {

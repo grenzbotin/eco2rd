@@ -152,7 +152,7 @@ const getTabDetails = async (tabId, requestData, resolve, reject) => {
   if (typeof tabId === "number" && tabId >= 0) {
     chrome.tabs.get(tabId, async (tab) => {
       if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
-      if (isUrl(tab.url)) {
+      if (tab?.url && isUrl(tab.url)) {
         originalSource = getHostname(tab.url);
         const subSource =
           getHostname(requestData.url) || getHostname(requestData.initiator);

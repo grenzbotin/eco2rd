@@ -134,9 +134,13 @@
  $input-border-color: transparent;
  $input-shadow: none;
 
- $tooltip-background: #202124E6;
- $hover-background: #00000033;
+ $tooltip-background: #161616F2;
+ $tooltip-border: #0000001A;
+
+ $chip-hover-background: #00000033;
+
  $overlay-background: #161616F2;
+ $overlay-border: #0000001A;
  
  // Import the rest of Bulma
  @import 'bulma/bulma.sass'

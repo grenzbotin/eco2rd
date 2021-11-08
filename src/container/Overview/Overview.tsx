@@ -41,10 +41,7 @@ function Overview(): React.ReactElement {
       settings.kwhModifier
     );
 
-  const graphDataGreen = getGreenDataCenterUsage(
-    detailData,
-    co2DataCenter + co2Transmission
-  );
+  const graphDataGreen = getGreenDataCenterUsage(detailData);
 
   return (
     <>
@@ -69,11 +66,14 @@ function Overview(): React.ReactElement {
                     data={detailData.sort((a, b) => b.value - a.value)}
                     labelConverter={(value) => getConvertedMass(value)}
                     detail="node"
+                    total={co2DataCenter + co2Transmission}
                   />
                 </div>
               </Columns.Column>
               <Columns.Column size="half" className="pie-column">
-                <h3 className="pie-title">Consumed data hosted green</h3>
+                <h3 className="pie-title">
+                  Traffic based CO₂ emissions in data centers
+                </h3>
                 <h4 className="pie-subtitle">
                   {getAbsolutePercentageOfGreenHosted(detailData)}% of websites
                   you visited are hosted green
@@ -81,8 +81,9 @@ function Overview(): React.ReactElement {
                 <div className="pie-wrapper">
                   <PieChart
                     data={graphDataGreen}
-                    labelConverter={(value) => `${value}%`}
+                    labelConverter={(value) => getConvertedMass(value)}
                     detail="datacenter"
+                    total={co2DataCenter}
                   />
                 </div>
               </Columns.Column>

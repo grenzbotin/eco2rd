@@ -4,7 +4,12 @@ import {
   PERCENTAGE_OF_ENERGY_IN_TRANSMISSION_AND_END_USER,
 } from "config/constants";
 import { KWH_MODIFIER } from "config/energy";
-import { DatacenterObj, DataObj, DetailDataObj } from "config/types";
+import {
+  DatacenterObj,
+  DataObj,
+  DetailDataObj,
+  DataCenterUsageObj,
+} from "config/types";
 import { shortenUrl } from "helpers/utils";
 import { checkForDay } from "helpers/dates";
 import { getKWHPerGB, getRounded } from "helpers/numbers";
@@ -103,6 +108,7 @@ const getCo2Equivalent = (
           value: co2DC + co2T,
           kwhTotal: energyConsumption,
           bytes: size,
+          dataCenter: co2DC,
           green: dataCenter && dataCenter[l]?.green,
         });
       }
@@ -112,38 +118,29 @@ const getCo2Equivalent = (
 };
 
 const getGreenDataCenterUsage = (
-  detailData: DetailDataObj[],
-  totalCo2: number
-): DetailDataObj[] => {
+  detailData: DetailDataObj[]
+): DataCenterUsageObj[] => {
   if (detailData.length === 0) return [];
 
   return [
     {
       label: "Green",
       id: "green",
-      value: getRounded(
-        (detailData
-          .filter((data) => data.green)
-          .reduce((sum, current) => {
-            return sum + current.value;
-          }, 0) /
-          totalCo2) *
-          100
-      ),
+      value: detailData
+        .filter((data) => data.green)
+        .reduce((sum, current) => {
+          return sum + current.dataCenter;
+        }, 0),
       color: "#29f098",
     },
     {
       label: "Grey",
       id: "grey",
-      value: getRounded(
-        (detailData
-          .filter((data) => !data.green)
-          .reduce((sum, current) => {
-            return sum + current.value;
-          }, 0) /
-          totalCo2) *
-          100
-      ),
+      value: detailData
+        .filter((data) => !data.green)
+        .reduce((sum, current) => {
+          return sum + current.dataCenter;
+        }, 0),
       color: "#A4A7A3",
     },
   ];

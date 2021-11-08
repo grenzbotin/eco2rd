@@ -54,7 +54,6 @@ function UsageData({
   kwhTotal: number;
 }): React.ReactElement {
   const [selected, setSelected] = useState<string | undefined>(undefined);
-  console.log(selected);
 
   const handleSelect = (type: string) => {
     if (selected === type) {

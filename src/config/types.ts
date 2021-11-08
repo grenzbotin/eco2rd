@@ -41,10 +41,18 @@ export interface DetailDataObj {
   id: string;
   label: string;
   value: number;
+  dataCenter: number;
   green?: boolean;
   color?: string;
   kwhTotal?: number;
   bytes?: number;
+}
+
+export interface DataCenterUsageObj {
+  id: string;
+  label: string;
+  value: number;
+  color?: string;
 }
 
 export interface UserObj {

@@ -3,19 +3,22 @@ import { Box } from "react-bulma-components";
 import { memo, useState } from "react";
 
 import { GRAPH_COLORS } from "config/constants";
-import { DetailDataObj } from "config/types";
+import { DataCenterUsageObj, DetailDataObj } from "config/types";
 import { useRoute } from "context/routeContext";
 
 import "./PieChart.style.scss";
+import { getRounded } from "helpers/numbers";
 
 function PieChart({
   data,
   labelConverter,
   detail,
+  total,
 }: {
-  data: DetailDataObj[];
+  data: DetailDataObj[] | DataCenterUsageObj[];
   labelConverter: (_value: number) => string;
   detail: string;
+  total: number;
 }): React.ReactElement {
   const { setRoute } = useRoute();
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -43,6 +46,7 @@ function PieChart({
   return (
     <div className={isHovered ? `pie-container hovered` : `pie-container`}>
       <ResponsivePie
+        key={total}
         data={shortenedData}
         margin={{ top: 20, right: 40, bottom: 20, left: 40 }}
         colors={
@@ -72,7 +76,11 @@ function PieChart({
         onClick={(node) => setRoute({ type: detail, origin: node.data.id })}
         tooltip={(input) => (
           <Box className="tooltip-container">
-            <span className="tooltip-label">{input.datum.label}</span> <br />
+            <span className="tooltip-label">
+              {input.datum.label} (
+              {getRounded((input.datum.value / total) * 100, 1)}%)
+            </span>{" "}
+            <br />
             <span className="tooltip-value">
               {labelConverter(input.datum.value)}
             </span>

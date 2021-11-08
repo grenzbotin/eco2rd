@@ -13,10 +13,10 @@
   border-radius: 25px;
   &:hover, &:focus {
     cursor: pointer;
-    background-color: $hover-background;
+    background-color: $chip-hover-background;
   }
   &.selected {
-    background-color: $hover-background;
+    background-color: $chip-hover-background;
   }
 }
 
@@ -30,10 +30,11 @@
   align-items: center;
   justify-content: center;
   margin-right: 0.5rem;
-  > figure.avatar-image {
-    width: 25px;
-    height: 25px;
-  }
+}
+
+.avatar-image {
+  width: 25px;
+  height: 25px;
 }
 
 .category-label {
@@ -55,12 +56,22 @@
   z-index: 1;
   & > .content-wrapper {
     background-color: $overlay-background;
+    border: 2px solid $overlay-border;
     border-radius: 25px;
     margin: 0 12px;
-    padding: 1rem 4rem 1rem 1rem;
+    padding: 1.5rem 4rem 1rem 1.5rem;
     & > .btn-close {
       right: 1.8rem;
       top: 1rem;
+      > button {
+        background-color: transparent;
+        border: 0;
+        font-size: .9rem !important;
+        color: $beige-light;
+        &:hover,&:focus {
+          color: $sand-light;
+        }
+      }
     }
     & > div {
       font-size: 0.9rem;
