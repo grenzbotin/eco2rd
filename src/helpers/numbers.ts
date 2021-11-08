@@ -6,6 +6,19 @@ const getRounded = (value: number, precision?: number): number => {
   return Math.round(value * multiplier) / multiplier;
 };
 
+const convertNumber = (value: number): { divisor: number; unit: string } => {
+  switch (true) {
+    case value < 1000:
+      return { divisor: 1, unit: "" };
+    case 1000 < value && value < 100000:
+      return { divisor: 1000, unit: "k" };
+    case value > 100000:
+      return { divisor: 1000000, unit: "M" };
+    default:
+      return { divisor: 1, unit: "" };
+  }
+};
+
 const convertBytes = (value: number): { divisor: number; unit: string } => {
   switch (true) {
     case value < 1024:
@@ -67,6 +80,12 @@ const getConvertedMass = (value: number): string => {
   return `${getRounded(value / divisor)}${unit} CO₂`;
 };
 
+const getConvertedNumber = (value: number): string => {
+  const { divisor, unit } = convertNumber(value);
+
+  return `${getRounded(value / divisor)}${unit}`;
+};
+
 const getKWHPerGB = (bytes: number, kwh: number): number =>
   (bytes / GIGA_BYTE_IN_BYTES) * kwh;
 
@@ -102,6 +121,7 @@ export {
   convertKwh,
   getConvertedKwh,
   getConvertedMass,
+  getConvertedNumber,
   getRounded,
   getKWHPerGB,
   getCo2InLitres,

@@ -6,11 +6,13 @@ import movieImage from "assets/movie.webp";
 import smartphoneImage from "assets/smartphone.webp";
 import kettleImage from "assets/kettle.webp";
 import carImage from "assets/car.webp";
+import desktopImage from "assets/desktoppc.webp";
 
 import {
   getConvertedBytes,
   getConvertedKwh,
   getConvertedMass,
+  getConvertedNumber,
   getRounded,
 } from "helpers/numbers";
 import { utils } from "config/carbon";
@@ -28,7 +30,8 @@ const TYPES = {
         key: "tree",
         convert: (gramm: number): string =>
           `one average tree would be busy for ${getRounded(
-            gramm / utils.CO2_GRAMM_TREE_ABSORBATION_PER_DAY
+            gramm / utils.CO2_GRAMM_TREE_ABSORBATION_PER_DAY,
+            1
           )} days to absorb it.`,
       },
       {
@@ -57,6 +60,15 @@ const TYPES = {
             bytes / utils.BYTES_1MIN_4K_STREAM
           )} minutes of a 4K movie stream.`,
       },
+      {
+        image: desktopImage,
+        alt: "Desktop PC illustration",
+        key: "desktop page",
+        convert: (bytes: number): string =>
+          `we have the size of ${getConvertedNumber(
+            bytes / utils.BYTES_MEDIAN_DESKTOP_PAGE_2010
+          )} average desktop pages in 2010 (~400KB).`,
+      },
     ],
   },
   electricity: {
@@ -70,7 +82,7 @@ const TYPES = {
         alt: "smartphone",
         key: "smartphone",
         convert: (kwh: number): string =>
-          `a smartphone could be charged ${getRounded(
+          `a smartphone could be charged ${getConvertedNumber(
             kwh / utils.KWH_SMARTPHONE_CHARGED
           )} times.`,
       },
@@ -79,7 +91,7 @@ const TYPES = {
         alt: "kettle",
         key: "kettle",
         convert: (kwh: number): string =>
-          `a kettle could heat up around ${getRounded(
+          `a kettle could heat up around ${getConvertedNumber(
             kwh / utils.KWH_1L_WATER_BOILED
           )} liters of water.`,
       },
