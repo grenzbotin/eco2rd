@@ -8,18 +8,10 @@ import { useDataCenter } from "hooks/useDataCenter";
 import { useStats } from "hooks/useStats";
 import { checkForDay } from "../helpers";
 import DataCenterDisplay from "components/DataCenterDisplay";
-import { shortenUrl } from "helpers";
+import { shortenUrl } from "helpers/utils";
 
 import "./DataCenter.style.scss";
-
-const COLUMNS = [
-  {
-    name: "Origin",
-  },
-  {
-    name: "Data center status",
-  },
-];
+import { DATA_CENTER_COLUMNS } from "./constants";
 
 function TableRow({
   item,
@@ -93,7 +85,7 @@ function ResultDataCenter(): React.ReactElement {
         <Table className="datacenter-table is-fullwidth">
           <thead>
             <tr>
-              {COLUMNS.map((column) => (
+              {DATA_CENTER_COLUMNS.map((column) => (
                 <th key={column.name}>{column.name}</th>
               ))}
               <th />

@@ -6,8 +6,8 @@ import { useUserSettings } from "context/userContext";
 import { KWH_MODIFIER_OPTIONS } from "config/energy";
 import { useStats } from "hooks/useStats";
 
-import { getRoughSizeOfObject, sortByKey } from "./helpers";
-import { getConvertedBytes } from "../helpers";
+import { getConvertedBytes, getRoughSizeOfObject } from "helpers/numbers";
+import { sortObjectArrayByKey } from "helpers/utils";
 
 import "./Options.style.scss";
 
@@ -50,7 +50,7 @@ function Options(): React.ReactElement {
             onChange={(e) => handleChange(e, "co2Region")}
             value={settings.co2Region}
           >
-            {sortByKey(regions, "title").map((region) => (
+            {sortObjectArrayByKey(regions, "title").map((region) => (
               <option key={region.key} value={region.key}>
                 {region.title}
               </option>

@@ -9,10 +9,10 @@ import LottieIllustration from "components/LottieIllustration";
 import LoadingIndicator from "components/LoadingIndicator";
 import {
   getCo2Equivalent,
-  getConvertedMass,
   getGreenDataCenterUsage,
   getAbsolutePercentageOfGreenHosted,
 } from "../helpers";
+import { getConvertedMass } from "helpers/numbers";
 import PieChart from "components/PieChart";
 import UsageData from "components/UsageData";
 

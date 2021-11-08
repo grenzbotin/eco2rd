@@ -21,7 +21,7 @@ const dataCenterMock = {
   },
   domain_6: {
     gwfTimestamp: Date.now(),
-    green: false,
+    green: null,
   },
 };
 

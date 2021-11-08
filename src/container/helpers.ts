@@ -1,53 +1,13 @@
 import { utils } from "config/carbon";
 import {
-  GIGA_BYTE_IN_BYTES,
   PERCENTAGE_OF_ENERGY_IN_DATACENTER,
   PERCENTAGE_OF_ENERGY_IN_TRANSMISSION_AND_END_USER,
-  SCOPE_MONTH,
-  SCOPE_TODAY,
-  SCOPE_TOTAL,
 } from "config/constants";
 import { KWH_MODIFIER } from "config/energy";
 import { DatacenterObj, DataObj, DetailDataObj } from "config/types";
-import { shortenUrl } from "helpers";
-import { getRounded } from "components/helpers";
-
-const convertMass = (value: number): { divisor: number; unit: string } => {
-  switch (true) {
-    case value < 1000:
-      return { divisor: 1, unit: "g" };
-    case 1000 < value && value < 1000000:
-      return { divisor: 1000, unit: "kg" };
-    case value > 1000000:
-      return { divisor: 1000000, unit: "t" };
-    default:
-      return { divisor: 1, unit: "g" };
-  }
-};
-
-const getConvertedMass = (value: number): string => {
-  const { divisor, unit } = convertMass(value);
-
-  return `${getRounded(value / divisor)}${unit} CO₂`;
-};
-
-const getKWHPerGB = (bytes: number, kwh: number) =>
-  (bytes / GIGA_BYTE_IN_BYTES) * kwh;
-
-const getBoD = (time: Date) => time.setHours(0, 0, 0, 0);
-
-const checkForDay = (timestamp: Date, scope: string): boolean | undefined => {
-  const today = getBoD(new Date());
-  const thisMonth = new Date(today).setDate(1);
-  const thatDay = getBoD(new Date(timestamp));
-  const thatMonth = new Date(thatDay).setDate(1);
-
-  return {
-    [SCOPE_TODAY]: today === thatDay,
-    [SCOPE_MONTH]: thisMonth === thatMonth,
-    [SCOPE_TOTAL]: true,
-  }[scope];
-};
+import { shortenUrl } from "helpers/utils";
+import { checkForDay } from "helpers/dates";
+import { getKWHPerGB, getRounded } from "helpers/numbers";
 
 const getCo2EquivalentDetail = (
   data: DataObj,
@@ -151,8 +111,6 @@ const getCo2Equivalent = (
   return { co2DataCenter, co2Transmission, bytes, kwhTotal, detailData };
 };
 
-const getCo2InLitres = (co2: number): number => co2 * utils.CO2_GRAMS_TO_LITRES;
-
 const getGreenDataCenterUsage = (
   detailData: DetailDataObj[],
   totalCo2: number
@@ -202,9 +160,7 @@ const getAbsolutePercentageOfGreenHosted = (
 };
 
 export {
-  getConvertedMass,
   getCo2Equivalent,
-  getCo2InLitres,
   checkForDay,
   getGreenDataCenterUsage,
   getAbsolutePercentageOfGreenHosted,

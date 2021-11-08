@@ -6,26 +6,16 @@ import { useRoute } from "context/routeContext";
 import { useUserSettings } from "context/userContext";
 import { useDataCenter } from "hooks/useDataCenter";
 import { useStats } from "hooks/useStats";
-import { getConvertedBytes, getConvertedKwh } from "components/helpers";
-import { getCo2Equivalent, getConvertedMass } from "../helpers";
+import {
+  getConvertedBytes,
+  getConvertedKwh,
+  getConvertedMass,
+} from "helpers/numbers";
+import { getCo2Equivalent } from "../helpers";
 import consumptionTypes from "config/consumptionTypes";
 
 import "./Others.style.scss";
-
-const COLUMNS = [
-  {
-    name: "Origin",
-  },
-  {
-    id: "co2",
-  },
-  {
-    id: "download",
-  },
-  {
-    id: "electricity",
-  },
-];
+import { OTHERS_TABLE_COLUMNS } from "./constants";
 
 function TableRow({ item }: { item: DetailDataObj }): React.ReactElement {
   const { setRoute } = useRoute();
@@ -87,7 +77,7 @@ function ResultTable(): React.ReactElement {
         <Table className="consumption-table is-fullwidth">
           <thead>
             <tr>
-              {COLUMNS.map((column) => (
+              {OTHERS_TABLE_COLUMNS.map((column) => (
                 <th key={column.name || column.id}>
                   {column.name
                     ? column.name

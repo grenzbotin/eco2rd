@@ -11,7 +11,7 @@ import {
 
 import { DEFAULTS, storageKeys } from "config/constants";
 import { UserObj, UserSettingContextType } from "config/types";
-import { getFromStorage, saveInStorage } from "helpers";
+import { getFromStorage, saveInStorage } from "helpers/utils";
 
 export const initialUserData = {
   co2Region: DEFAULTS.co2Region,

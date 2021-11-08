@@ -10,10 +10,10 @@ import carImage from "assets/car.webp";
 import {
   getConvertedBytes,
   getConvertedKwh,
+  getConvertedMass,
   getRounded,
-} from "components/helpers";
+} from "helpers/numbers";
 import { utils } from "config/carbon";
-import { getConvertedMass } from "container/helpers";
 
 const TYPES = {
   co2: {

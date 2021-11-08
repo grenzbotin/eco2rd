@@ -1,4 +1,4 @@
-import { StorageData, Callback } from "./config/types";
+import { StorageData, Callback } from "../config/types";
 
 const logIt = (obj: string | unknown | Record<string, unknown>): void => {
   if (chrome && chrome.runtime) {
@@ -38,6 +38,17 @@ const saveInStorage = (key: string, value: StorageData): Promise<unknown> => {
   });
 };
 
+const sortObjectArrayByKey = (
+  arr: Record<string, string>[],
+  key: string
+): Record<string, string>[] => arr.sort((a, b) => a[key].localeCompare(b[key]));
+
 const shortenUrl = (url: string): string => url.replace("www.", "");
 
-export { logIt, getFromStorage, saveInStorage, shortenUrl };
+export {
+  logIt,
+  getFromStorage,
+  saveInStorage,
+  shortenUrl,
+  sortObjectArrayByKey,
+};

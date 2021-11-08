@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { storageKeys } from "config/constants";
 import { DataObj, VoidFunction } from "config/types";
-import { getFromStorage, saveInStorage } from "helpers";
+import { getFromStorage, saveInStorage } from "helpers/utils";
 
 import statsMock from "./statsMock";
 

@@ -1,6 +1,11 @@
 import Logo from "components/Logo";
 
-import { getDataCenterType } from "./helpers";
+import {
+  DATA_CENTER_GREEN,
+  DATA_CENTER_RED,
+  DATA_CENTER_UNKNOWN,
+} from "config/datacenterTypes";
+
 import "./DataCenterDisplay.style.scss";
 
 const DataCenterDisplay = ({
@@ -12,7 +17,11 @@ const DataCenterDisplay = ({
   variant?: string;
   timestamp: Date;
 }): React.ReactElement => {
-  const typeInformation = getDataCenterType(status);
+  const typeInformation = {
+    [+true]: DATA_CENTER_UNKNOWN,
+    [+(status === true)]: DATA_CENTER_GREEN,
+    [+(status === false)]: DATA_CENTER_RED,
+  }[1];
 
   const renderedText = {
     [+true]: typeInformation.shortText,

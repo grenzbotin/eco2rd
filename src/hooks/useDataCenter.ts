@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { storageKeys } from "config/constants";
 import { DatacenterObj, VoidFunction } from "config/types";
-import { getFromStorage } from "helpers";
+import { getFromStorage } from "helpers/utils";
 
 import dataCenterMock from "./dataCenterMock";
 
