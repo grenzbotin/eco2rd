@@ -15,3 +15,11 @@ html,body {
   flex-direction: column;
   position: relative;
 }
+
+a {
+  color: $sand-light;
+  text-decoration: none;
+  &:hover, &:focus {
+    color: $cream;
+  }
+}

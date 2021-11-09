@@ -1,6 +1,6 @@
 {
   "name": "eco₂rd",
-  "description": "CO₂ footprint for web based data consumption",
+  "description": "CO₂ footprint for your browser based data consumption",
   "host_permissions": [
     "<all_urls>"
   ],
@@ -27,6 +27,6 @@
     "128": "/images/logo128.png",
     "512": "/images/logo512.png"
   },
-  "version": "0.1",
+  "version": "0.1.0",
   "manifest_version": 3
 }

@@ -29,11 +29,12 @@ function TableRow({
         <DataCenterDisplay
           status={item?.green}
           variant="short"
-          timestamp={item.gwfTimestamp}
+          timestamp={item?.gwfTimestamp}
         />
       </td>
       <td className="text-right">
         <Button
+          aria-label="Go to url details"
           size="small"
           onClick={() => setRoute({ type: "node", origin: url })}
         >
@@ -45,8 +46,8 @@ function TableRow({
 }
 
 const getFilter = (origin: string, item: DatacenterItem) => {
-  if (origin === "green") return item.green;
-  return !item.green;
+  if (origin === "green") return item?.green;
+  return !item?.green;
 };
 
 function ResultDataCenter(): React.ReactElement {
@@ -62,12 +63,13 @@ function ResultDataCenter(): React.ReactElement {
 
   const filteredDataCenter = Object.keys(stats)
     .filter((item) => checkForDay(stats[item][scope]?.lastDate, scope))
-    .filter((item) => dataCenter[item] && getFilter(origin, dataCenter[item]));
+    .filter((item) => getFilter(origin, dataCenter[item]));
 
   return (
     <>
       <div className="top-line">
         <Button
+          aria-label="Back to overview"
           size="small"
           onClick={() => setRoute({ type: RESULT_ROUTE_OVERVIEW, origin: "" })}
         >

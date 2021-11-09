@@ -47,6 +47,7 @@ function ResultDetail(): React.ReactElement {
     <>
       <div className="top-line">
         <Button
+          aria-label="Back to overview"
           size="small"
           onClick={() => setRoute({ type: RESULT_ROUTE_OVERVIEW, origin: "" })}
         >

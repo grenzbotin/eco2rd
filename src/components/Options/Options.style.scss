@@ -7,7 +7,7 @@
   z-index: 2;
 }
 
-.btn-open, .btn-close {
+.btn-close {
   position: absolute;
   right: 1.5rem;
 }
@@ -19,4 +19,15 @@
 
 .button-icon {
   margin-right: 0.5rem;
+}
+
+.options-credits-wrapper {
+  font-size: 0.7rem;
+  position: absolute;
+  right: 1.5rem;
+  display: flex;
+  align-items: flex-end;
+  button {
+    margin-left: 1rem;
+  }
 }

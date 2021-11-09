@@ -1,5 +1,5 @@
 # eco₂rd
-CO₂ footprint for web based data consumption
+CO₂ footprint for browser traffic based data consumption
 
 ### Todos
 #### Content
@@ -77,7 +77,6 @@ car
 
 desktop
 <div>Icons made by <a href="https://www.flaticon.com/authors/iconjam" title="Iconjam">Iconjam</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-
 
 
 #### Assets: LottieFiles

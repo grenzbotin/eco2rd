@@ -99,14 +99,19 @@ function Options(): React.ReactElement {
       </Button.Group>
     </Box>
   ) : (
-    <div className="btn-open">
-      <Button
-        aria-label="open settings"
-        size="small"
-        onClick={() => setShowSetting(true)}
-      >
-        <span className="icon-gears" />
-      </Button>
+    <div className="options-credits-wrapper">
+      <a href="https://ecord.info/credits" target="_blank">
+        Credits
+      </a>
+      <div className="btn-open">
+        <Button
+          aria-label="open settings"
+          size="small"
+          onClick={() => setShowSetting(true)}
+        >
+          <span className="icon-gears" />
+        </Button>
+      </div>
     </div>
   );
 }

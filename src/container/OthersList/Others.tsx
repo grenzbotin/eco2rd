@@ -31,6 +31,7 @@ function TableRow({ item }: { item: DetailDataObj }): React.ReactElement {
       </td>
       <td className="text-right">
         <Button
+          aria-label="Go to url details"
           size="small"
           onClick={() => setRoute({ type: "node", origin: item.id })}
         >
@@ -63,6 +64,7 @@ function ResultTable(): React.ReactElement {
     <>
       <div className="top-line">
         <Button
+          aria-label="Back to overview"
           size="small"
           onClick={() => setRoute({ type: RESULT_ROUTE_OVERVIEW, origin: "" })}
         >
