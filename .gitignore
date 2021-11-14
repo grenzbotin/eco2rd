@@ -7,7 +7,7 @@
 
 # production
 /build
-ecord.zip
+/versions
 
 # misc
 .DS_Store

@@ -157,11 +157,14 @@ const getTabDetails = async (tabId, requestData, resolve, reject) => {
         const subSource =
           getHostname(requestData.url) || getHostname(requestData.initiator);
 
-        resolve({
-          size: getRequestSize(requestData),
-          origin: originalSource,
-          sub: subSource !== originalSource ? subSource : null,
-        });
+        const size = getRequestSize(requestData);
+        if (size > 0) {
+          resolve({
+            size,
+            origin: originalSource,
+            sub: subSource !== originalSource ? subSource : null,
+          });
+        }
       } else reject(new Error("requested tab url was not valid"));
     });
   } else {
