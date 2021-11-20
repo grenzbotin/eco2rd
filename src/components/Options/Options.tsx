@@ -80,7 +80,7 @@ function Options(): React.ReactElement {
           </Icon>
         </Control>
       </Field>
-      <Button.Group>
+      <Button.Group className="buttons">
         <Button size="small" onClick={handleChangeRecording}>
           <span
             className={`button-icon ${
@@ -97,6 +97,7 @@ function Options(): React.ReactElement {
           {getConvertedBytes(getRoughSizeOfObject(stats))})
         </Button>
       </Button.Group>
+      <p className="version-number">v{process?.env?.REACT_APP_VERSION}</p>
     </Box>
   ) : (
     <div className="options-credits-wrapper">

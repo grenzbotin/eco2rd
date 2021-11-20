@@ -1,3 +1,5 @@
+@import 'config/theme.scss';
+
 .options-wrapper {
   height: fit-content;
   width: fit-content;
@@ -21,6 +23,10 @@
   margin-right: 0.5rem;
 }
 
+.buttons {
+  margin-bottom: 0 !important;
+}
+
 .options-credits-wrapper {
   font-size: 0.7rem;
   position: absolute;
@@ -30,4 +36,10 @@
   button {
     margin-left: 1rem;
   }
+}
+
+.version-number {
+  font-size: 0.6rem;
+  text-align: end;
+  color: $green-light;
 }

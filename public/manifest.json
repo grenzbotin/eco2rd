@@ -5,6 +5,7 @@
     "<all_urls>"
   ],
   "permissions": [
+    "scripting",
     "storage",
     "unlimitedStorage",
     "webRequest",
