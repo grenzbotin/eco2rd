@@ -3,7 +3,7 @@
 build() {
     echo '🔨 Building development build for using as unpacked extension'
 
-    rm -rf dev_build
+    rm -rf build_dev
 
     export INLINE_RUNTIME_CHUNK=false
     export GENERATE_SOURCEMAP=false
@@ -11,14 +11,14 @@ build() {
 
     react-scripts build
 
-    echo '🧪 Create dev_build folder'
-    mkdir -p dev_build
-    cp -r build/* dev_build
+    echo '🧪 Create build_dev folder'
+    mkdir -p build_dev
+    cp -r build/* build_dev
 
-    node -p "JSON.stringify({...require('./dev_build/manifest.json'), name: 'eco₂rd_dev'}, null, 2)" > manifest.json
-    mv manifest.json dev_build/manifest.json
+    node -p "JSON.stringify({...require('./build_dev/manifest.json'), name: 'eco₂rd_dev'}, null, 2)" > manifest.json
+    mv manifest.json build_dev/manifest.json
 
-    echo '✅ You can now import your dev_build folder as unpacked extension in your browser extension manager'
+    echo '✅ You can now import your build_dev folder as unpacked extension in your browser extension manager'
 }
 
 build

@@ -7,8 +7,8 @@
 
 # production
 /build
+/build_dev
 /versions
-/dev_build
 
 # misc
 .DS_Store

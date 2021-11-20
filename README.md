@@ -10,7 +10,7 @@ After cloning the repo, you can simply to a `yarn start`. This will run the pop 
 
 #### Development build
 In order to use the extension for testing purposes, you can create an unpacked dev build via `yarn build-dev`.
-This will create a folder `dev_build` that can be load as unpacked extension the browser.
+This will create a folder `build_dev` that can be load as unpacked extension the browser.
 
 -------
 
