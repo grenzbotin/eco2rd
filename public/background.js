@@ -1,5 +1,7 @@
 /*global chrome*/
 
+importScripts("./keepAlive.js");
+
 // -------------------------------------------------
 // CONSTANTS
 // -------------------------------------------------
@@ -425,3 +427,5 @@ chrome.tabs.onUpdated.addListener((tabId) => {
     getTabInfo(tabId);
   }
 });
+
+keepAlive();

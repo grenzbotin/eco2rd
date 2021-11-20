@@ -15,8 +15,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "buildStats": "react-scripts build --stats",
+    "build": "sh ./pipeline/build-release.sh",
+    "build-dev": "sh ./pipeline/build-dev.sh",
+    "build-stats": "react-scripts build --stats",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}",
