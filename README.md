@@ -1,7 +1,10 @@
-# eco₂rd
-CO₂ footprint for browser traffic based data consumption
+![image](https://raw.githubusercontent.com/grenzbotin/eco2rd/b254ac6c6f105b9d115df6bd105c07314353b012/src/assets/logo_word_mark.svg?raw=true)
 
--------
+## eco₂rd
+##### CO₂ footprint for browser traffic based data consumption
+
+----
+----
 
 ### 🛠 How to run
 
