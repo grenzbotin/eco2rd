@@ -8,7 +8,7 @@ function UsageItem({
   type,
   value,
   onSelect,
-  selected,
+  selected
 }: {
   type: string;
   value: number | string;
@@ -35,9 +35,7 @@ function UsageItem({
         </div>
         <div>
           <span className="category-label">{consumptionType.title}</span> <br />
-          <span className="category-number">
-            {consumptionType.convert(value)}
-          </span>
+          <span className="category-number">{consumptionType.convert(value)}</span>
         </div>
       </div>
     </>
@@ -47,7 +45,7 @@ function UsageItem({
 function UsageData({
   co2,
   bytes,
-  kwhTotal,
+  kwhTotal
 }: {
   co2: number;
   bytes: number;
@@ -66,7 +64,7 @@ function UsageData({
   const CONSUMPTION_TYPES = {
     co2: co2,
     download: bytes,
-    electricity: kwhTotal,
+    electricity: kwhTotal
   };
 
   return (
@@ -98,9 +96,7 @@ function UsageData({
             <p className="category-label">
               With{" "}
               <span className="category-number">
-                {consumptionTypes[selected].convert(
-                  CONSUMPTION_TYPES[selected]
-                )}
+                {consumptionTypes[selected].convert(CONSUMPTION_TYPES[selected])}
               </span>
               ..
             </p>

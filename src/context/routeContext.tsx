@@ -6,7 +6,7 @@ import {
   useContext,
   useMemo,
   useState,
-  Dispatch,
+  Dispatch
 } from "react";
 
 import { RESULT_ROUTE_OVERVIEW } from "config/routes";
@@ -14,13 +14,12 @@ import { Route, RouteContextType } from "config/types";
 
 export const initialRouteData = {
   type: RESULT_ROUTE_OVERVIEW,
-  origin: "",
+  origin: ""
 };
 
 const RouteContext = createContext<RouteContextType>({
   route: {} as Route,
-  setRoute: (_value) =>
-    console.error("attempted to use RouteContext outside of a Provider"),
+  setRoute: (_value) => console.error("attempted to use RouteContext outside of a Provider")
 });
 
 const useRoute = (): {
@@ -38,16 +37,12 @@ const RouteProvider = (props: PropsWithChildren<unknown>): ReactElement => {
   const value = useMemo(
     () => ({
       route,
-      setRoute,
+      setRoute
     }),
     [route, setRoute]
   );
 
-  return (
-    <RouteContext.Provider value={value}>
-      {props.children}
-    </RouteContext.Provider>
-  );
+  return <RouteContext.Provider value={value}>{props.children}</RouteContext.Provider>;
 };
 
 export { useRoute, RouteProvider };

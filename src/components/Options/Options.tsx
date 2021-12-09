@@ -18,10 +18,7 @@ function Options(): React.ReactElement {
   const { settings, setSettingsPerKey } = useUserSettings();
   const { stats, deleteStats } = useStats();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-    key: string
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>, key: string) => {
     setSettingsPerKey(key, e.target.value);
   };
 
@@ -34,11 +31,7 @@ function Options(): React.ReactElement {
   return showSetting ? (
     <Box className="options-wrapper">
       <div className="btn-close">
-        <Button
-          aria-label="close settings"
-          size="small"
-          onClick={() => setShowSetting(false)}
-        >
+        <Button aria-label="close settings" size="small" onClick={() => setShowSetting(false)}>
           <span className="icon-close" />
         </Button>
       </div>
@@ -84,17 +77,14 @@ function Options(): React.ReactElement {
         <Button size="small" onClick={handleChangeRecording}>
           <span
             className={`button-icon ${
-              settings.stoppedRecording
-                ? "icon-play-circle-o"
-                : "icon-pause-circle-o"
+              settings.stoppedRecording ? "icon-play-circle-o" : "icon-pause-circle-o"
             }`}
           />
           {settings.stoppedRecording ? "Start" : "Pause"} recording
         </Button>
         <Button size="small" onClick={handleDelete}>
           <span className="button-icon icon-trash-o" />
-          Delete consumption data ( ~
-          {getConvertedBytes(getRoughSizeOfObject(stats))})
+          Delete consumption data ( ~{getConvertedBytes(getRoughSizeOfObject(stats))})
         </Button>
       </Button.Group>
       <p className="version-number">v{process?.env?.REACT_APP_VERSION}</p>
@@ -105,11 +95,7 @@ function Options(): React.ReactElement {
         Credits
       </a>
       <div className="btn-open">
-        <Button
-          aria-label="open settings"
-          size="small"
-          onClick={() => setShowSetting(true)}
-        >
+        <Button aria-label="open settings" size="small" onClick={() => setShowSetting(true)}>
           <span className="icon-gears" />
         </Button>
       </div>

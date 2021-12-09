@@ -7,7 +7,7 @@ import { useUserSettings } from "context/userContext";
 function ScopeSelector(): React.ReactElement {
   const {
     settings: { scope },
-    setSettingsPerKey,
+    setSettingsPerKey
   } = useUserSettings();
 
   const handleChange = (value: string) => {

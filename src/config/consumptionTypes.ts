@@ -13,7 +13,7 @@ import {
   getConvertedKwh,
   getConvertedMass,
   getConvertedNumber,
-  getRounded,
+  getRounded
 } from "helpers/numbers";
 import { utils } from "config/carbon";
 
@@ -32,7 +32,7 @@ const TYPES = {
           `one average tree would be busy for ${getRounded(
             gramm / utils.CO2_GRAMM_TREE_ABSORBATION_PER_DAY,
             1
-          )} days to absorb it.`,
+          )} days to absorb it.`
       },
       {
         image: carImage,
@@ -41,9 +41,9 @@ const TYPES = {
         convert: (bytes: number): string =>
           `we have the same amount of CO₂ as a conventional, fuel based car would have emitted driving for ${getRounded(
             bytes / utils.CO2_GRAMM_PER_KM_CONVENTIONAL_CAR.nsb
-          )}km.`,
-      },
-    ],
+          )}km.`
+      }
+    ]
   },
   download: {
     alt: "file illustration with arrow",
@@ -58,7 +58,7 @@ const TYPES = {
         convert: (bytes: number): string =>
           `a person could watch around ${getRounded(
             bytes / utils.BYTES_1MIN_4K_STREAM
-          )} minutes of a 4K movie stream.`,
+          )} minutes of a 4K movie stream.`
       },
       {
         image: desktopImage,
@@ -67,9 +67,9 @@ const TYPES = {
         convert: (bytes: number): string =>
           `we have the size of ${getConvertedNumber(
             bytes / utils.BYTES_MEDIAN_DESKTOP_PAGE_2010
-          )} average desktop pages in 2010 (~400KB).`,
-      },
-    ],
+          )} average desktop pages in 2010 (~400KB).`
+      }
+    ]
   },
   electricity: {
     alt: "electricity tower illustration",
@@ -84,7 +84,7 @@ const TYPES = {
         convert: (kwh: number): string =>
           `a smartphone could be charged ${getConvertedNumber(
             kwh / utils.KWH_SMARTPHONE_CHARGED
-          )} times.`,
+          )} times.`
       },
       {
         image: kettleImage,
@@ -93,10 +93,10 @@ const TYPES = {
         convert: (kwh: number): string =>
           `a kettle could heat up around ${getConvertedNumber(
             kwh / utils.KWH_1L_WATER_BOILED
-          )} liters of water.`,
-      },
-    ],
-  },
+          )} liters of water.`
+      }
+    ]
+  }
 };
 
 export default TYPES;

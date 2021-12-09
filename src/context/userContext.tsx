@@ -6,7 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
+  useState
 } from "react";
 
 import { DEFAULTS, storageKeys } from "config/constants";
@@ -17,7 +17,7 @@ export const initialUserData = {
   co2Region: DEFAULTS.co2Region,
   scope: DEFAULTS.scope,
   kwhModifier: DEFAULTS.kwhModifier,
-  stoppedRecording: DEFAULTS.stoppedRecording,
+  stoppedRecording: DEFAULTS.stoppedRecording
 };
 
 const UserSettingContext = createContext<UserSettingContextType>({
@@ -26,7 +26,7 @@ const UserSettingContext = createContext<UserSettingContextType>({
     console.error("attempted to use UserSettingContext outside of a Provider"),
   setSettings: (_value) =>
     console.error("attempted to use UserSettingContext outside of a Provider"),
-  isLoading: true,
+  isLoading: true
 });
 
 const useUserSettings = (): {
@@ -34,15 +34,12 @@ const useUserSettings = (): {
   setSettingsPerKey: (_key: string, _val: boolean | string) => void;
   isLoading: boolean;
 } => {
-  const { settings, setSettingsPerKey, isLoading } =
-    useContext(UserSettingContext);
+  const { settings, setSettingsPerKey, isLoading } = useContext(UserSettingContext);
 
   return { settings, setSettingsPerKey, isLoading };
 };
 
-const UserSettingProvider = (
-  props: PropsWithChildren<unknown>
-): ReactElement => {
+const UserSettingProvider = (props: PropsWithChildren<unknown>): ReactElement => {
   const [settings, setSettings] = useState<UserObj>(initialUserData);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -69,7 +66,7 @@ const UserSettingProvider = (
       settings,
       setSettingsPerKey,
       setSettings,
-      isLoading,
+      isLoading
     }),
     [settings, setSettingsPerKey, isLoading]
   );
@@ -79,11 +76,7 @@ const UserSettingProvider = (
     saveInStorage(storageKeys.LOCAL_KEY_USER, settings);
   }, [settings]);
 
-  return (
-    <UserSettingContext.Provider value={value}>
-      {props.children}
-    </UserSettingContext.Provider>
-  );
+  return <UserSettingContext.Provider value={value}>{props.children}</UserSettingContext.Provider>;
 };
 
 export { useUserSettings, UserSettingProvider };

@@ -10,7 +10,7 @@ import LoadingIndicator from "components/LoadingIndicator";
 import {
   getCo2Equivalent,
   getGreenDataCenterUsage,
-  getAbsolutePercentageOfGreenHosted,
+  getAbsolutePercentageOfGreenHosted
 } from "../helpers";
 import { getConvertedMass } from "helpers/numbers";
 import PieChart from "components/PieChart";
@@ -32,14 +32,13 @@ function Overview(): React.ReactElement {
     return () => clearInterval(intervalId);
   }, [loadStats, loadDataCenter]);
 
-  const { co2DataCenter, co2Transmission, bytes, kwhTotal, detailData } =
-    getCo2Equivalent(
-      stats,
-      settings.scope,
-      settings.co2Region,
-      dataCenter,
-      settings.kwhModifier
-    );
+  const { co2DataCenter, co2Transmission, bytes, kwhTotal, detailData } = getCo2Equivalent(
+    stats,
+    settings.scope,
+    settings.co2Region,
+    dataCenter,
+    settings.kwhModifier
+  );
 
   const graphDataGreen = getGreenDataCenterUsage(detailData);
 
@@ -49,11 +48,7 @@ function Overview(): React.ReactElement {
         <LoadingIndicator />
       ) : (
         <>
-          <UsageData
-            co2={co2DataCenter + co2Transmission}
-            bytes={bytes}
-            kwhTotal={kwhTotal}
-          />
+          <UsageData co2={co2DataCenter + co2Transmission} bytes={bytes} kwhTotal={kwhTotal} />
           {detailData.length > 2 ? (
             <Columns breakpoint="mobile">
               <Columns.Column size="half" className="pie-column">
@@ -71,12 +66,10 @@ function Overview(): React.ReactElement {
                 </div>
               </Columns.Column>
               <Columns.Column size="half" className="pie-column">
-                <h3 className="pie-title">
-                  Traffic based CO₂ emissions in data centers
-                </h3>
+                <h3 className="pie-title">Traffic based CO₂ emissions in data centers</h3>
                 <h4 className="pie-subtitle">
-                  {getAbsolutePercentageOfGreenHosted(detailData)}% of websites
-                  you visited are hosted green
+                  {getAbsolutePercentageOfGreenHosted(detailData)}% of websites you visited are
+                  hosted green
                 </h4>
                 <div className="pie-wrapper">
                   <PieChart

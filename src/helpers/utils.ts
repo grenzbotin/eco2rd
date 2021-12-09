@@ -45,10 +45,4 @@ const sortObjectArrayByKey = (
 
 const shortenUrl = (url: string): string => url.replace("www.", "");
 
-export {
-  logIt,
-  getFromStorage,
-  saveInStorage,
-  shortenUrl,
-  sortObjectArrayByKey,
-};
+export { logIt, getFromStorage, saveInStorage, shortenUrl, sortObjectArrayByKey };

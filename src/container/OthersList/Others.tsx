@@ -6,11 +6,7 @@ import { useRoute } from "context/routeContext";
 import { useUserSettings } from "context/userContext";
 import { useDataCenter } from "hooks/useDataCenter";
 import { useStats } from "hooks/useStats";
-import {
-  getConvertedBytes,
-  getConvertedKwh,
-  getConvertedMass,
-} from "helpers/numbers";
+import { getConvertedBytes, getConvertedKwh, getConvertedMass } from "helpers/numbers";
 import { getCo2Equivalent } from "../helpers";
 import consumptionTypes from "config/consumptionTypes";
 
@@ -23,12 +19,8 @@ function TableRow({ item }: { item: DetailDataObj }): React.ReactElement {
     <tr key={item.id}>
       <td>{item.label}</td>
       <td className="text-right">{getConvertedMass(item.value)}</td>
-      <td className="text-right">
-        {item.bytes && getConvertedBytes(item.bytes)}
-      </td>
-      <td className="text-right">
-        {item.kwhTotal && getConvertedKwh(item.kwhTotal)}
-      </td>
+      <td className="text-right">{item.bytes && getConvertedBytes(item.bytes)}</td>
+      <td className="text-right">{item.kwhTotal && getConvertedKwh(item.kwhTotal)}</td>
       <td className="text-right">
         <Button
           aria-label="Go to url details"
@@ -56,9 +48,7 @@ function ResultTable(): React.ReactElement {
     settings.kwhModifier
   );
 
-  const others = detailData
-    .sort((a, b) => b.value - a.value)
-    .slice(-(detailData.length - 4));
+  const others = detailData.sort((a, b) => b.value - a.value).slice(-(detailData.length - 4));
 
   return (
     <>

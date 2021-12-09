@@ -86,8 +86,7 @@ const getConvertedNumber = (value: number): string => {
   return `${getRounded(value / divisor)}${unit}`;
 };
 
-const getKWHPerGB = (bytes: number, kwh: number): number =>
-  (bytes / GIGA_BYTE_IN_BYTES) * kwh;
+const getKWHPerGB = (bytes: number, kwh: number): number => (bytes / GIGA_BYTE_IN_BYTES) * kwh;
 
 const getCo2InLitres = (co2: number): number => co2 * utils.CO2_GRAMS_TO_LITRES;
 
@@ -125,5 +124,5 @@ export {
   getRounded,
   getKWHPerGB,
   getCo2InLitres,
-  getRoughSizeOfObject,
+  getRoughSizeOfObject
 };

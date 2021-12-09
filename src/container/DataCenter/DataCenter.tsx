@@ -13,24 +13,14 @@ import { shortenUrl } from "helpers/utils";
 import "./DataCenter.style.scss";
 import { DATA_CENTER_COLUMNS } from "./constants";
 
-function TableRow({
-  item,
-  url,
-}: {
-  item: DatacenterItem;
-  url: string;
-}): React.ReactElement {
+function TableRow({ item, url }: { item: DatacenterItem; url: string }): React.ReactElement {
   const { setRoute } = useRoute();
 
   return (
     <tr key={url}>
       <td>{shortenUrl(url)}</td>
       <td>
-        <DataCenterDisplay
-          status={item?.green}
-          variant="short"
-          timestamp={item?.gwfTimestamp}
-        />
+        <DataCenterDisplay status={item?.green} variant="short" timestamp={item?.gwfTimestamp} />
       </td>
       <td className="text-right">
         <Button
@@ -53,11 +43,11 @@ const getFilter = (origin: string, item: DatacenterItem) => {
 function ResultDataCenter(): React.ReactElement {
   const {
     route: { origin },
-    setRoute,
+    setRoute
   } = useRoute();
   const { stats } = useStats();
   const {
-    settings: { scope },
+    settings: { scope }
   } = useUserSettings();
   const { dataCenter } = useDataCenter();
 
@@ -78,8 +68,7 @@ function ResultDataCenter(): React.ReactElement {
         <div className="title-wrapper">
           <h1 className="detail-title">Datacenter</h1>
           <h2 className="detail-subtitle">
-            List of websites hosted on{" "}
-            {origin === "green" ? "green" : "unknown"} data centers
+            List of websites hosted on {origin === "green" ? "green" : "unknown"} data centers
           </h2>
         </div>
       </div>

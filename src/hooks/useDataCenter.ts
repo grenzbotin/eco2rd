@@ -6,8 +6,7 @@ import { getFromStorage } from "helpers/utils";
 
 import dataCenterMock from "./dataCenterMock";
 
-const initialData =
-  process.env.NODE_ENV === "development" ? dataCenterMock : {};
+const initialData = process.env.NODE_ENV === "development" ? dataCenterMock : {};
 
 export const useDataCenter = (): {
   dataCenter: DatacenterObj;

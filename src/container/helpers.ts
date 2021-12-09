@@ -1,15 +1,10 @@
 import { utils } from "config/carbon";
 import {
   PERCENTAGE_OF_ENERGY_IN_DATACENTER,
-  PERCENTAGE_OF_ENERGY_IN_TRANSMISSION_AND_END_USER,
+  PERCENTAGE_OF_ENERGY_IN_TRANSMISSION_AND_END_USER
 } from "config/constants";
 import { KWH_MODIFIER } from "config/energy";
-import {
-  DatacenterObj,
-  DataObj,
-  DetailDataObj,
-  DataCenterUsageObj,
-} from "config/types";
+import { DatacenterObj, DataObj, DetailDataObj, DataCenterUsageObj } from "config/types";
 import { shortenUrl } from "helpers/utils";
 import { checkForDay } from "helpers/dates";
 import { getKWHPerGB, getRounded } from "helpers/numbers";
@@ -41,16 +36,13 @@ const getCo2EquivalentDetail = (
   const energyConsumption = getKWHPerGB(size, KWH_MODIFIER[kwhModifier]);
 
   return {
-    co2DataCenter:
-      energyConsumption *
-      PERCENTAGE_OF_ENERGY_IN_DATACENTER *
-      CO2_FACTOR_DATA_CENTER,
+    co2DataCenter: energyConsumption * PERCENTAGE_OF_ENERGY_IN_DATACENTER * CO2_FACTOR_DATA_CENTER,
     co2Transmission:
       energyConsumption *
       PERCENTAGE_OF_ENERGY_IN_TRANSMISSION_AND_END_USER *
       CO2_FACTOR_TRANSMISSION,
     bytes: size,
-    kwhTotal: energyConsumption,
+    kwhTotal: energyConsumption
   };
 };
 
@@ -82,15 +74,10 @@ const getCo2Equivalent = (
           ? utils.CO2_PER_KWH_RENEWABLE
           : utils.CO2_PER_KWH_GRID_REGION.WORLD_DEFAULT;
 
-      const size = checkForDay(data[l][scope]?.lastDate, scope)
-        ? data[l][scope]?.size || 0
-        : 0;
+      const size = checkForDay(data[l][scope]?.lastDate, scope) ? data[l][scope]?.size || 0 : 0;
 
       const energyConsumption = getKWHPerGB(size, KWH_MODIFIER[kwhModifier]);
-      const co2DC =
-        energyConsumption *
-        PERCENTAGE_OF_ENERGY_IN_DATACENTER *
-        CO2_FACTOR_DATA_CENTER;
+      const co2DC = energyConsumption * PERCENTAGE_OF_ENERGY_IN_DATACENTER * CO2_FACTOR_DATA_CENTER;
       const co2T =
         energyConsumption *
         PERCENTAGE_OF_ENERGY_IN_TRANSMISSION_AND_END_USER *
@@ -109,7 +96,7 @@ const getCo2Equivalent = (
           kwhTotal: energyConsumption,
           bytes: size,
           dataCenter: co2DC,
-          green: dataCenter && dataCenter[l]?.green,
+          green: dataCenter && dataCenter[l]?.green
         });
       }
     });
@@ -117,9 +104,7 @@ const getCo2Equivalent = (
   return { co2DataCenter, co2Transmission, bytes, kwhTotal, detailData };
 };
 
-const getGreenDataCenterUsage = (
-  detailData: DetailDataObj[]
-): DataCenterUsageObj[] => {
+const getGreenDataCenterUsage = (detailData: DetailDataObj[]): DataCenterUsageObj[] => {
   if (detailData.length === 0) return [];
 
   return [
@@ -131,7 +116,7 @@ const getGreenDataCenterUsage = (
         .reduce((sum, current) => {
           return sum + current.dataCenter;
         }, 0),
-      color: "#29f098",
+      color: "#29f098"
     },
     {
       label: "Grey",
@@ -141,19 +126,15 @@ const getGreenDataCenterUsage = (
         .reduce((sum, current) => {
           return sum + current.dataCenter;
         }, 0),
-      color: "#A4A7A3",
-    },
+      color: "#A4A7A3"
+    }
   ];
 };
 
-const getAbsolutePercentageOfGreenHosted = (
-  detailData: DetailDataObj[]
-): number => {
+const getAbsolutePercentageOfGreenHosted = (detailData: DetailDataObj[]): number => {
   if (detailData.length === 0) return 0;
 
-  return getRounded(
-    (detailData.filter((item) => item.green).length / detailData.length) * 100
-  );
+  return getRounded((detailData.filter((item) => item.green).length / detailData.length) * 100);
 };
 
 export {
@@ -161,5 +142,5 @@ export {
   checkForDay,
   getGreenDataCenterUsage,
   getAbsolutePercentageOfGreenHosted,
-  getCo2EquivalentDetail,
+  getCo2EquivalentDetail
 };

@@ -1,28 +1,28 @@
 const dataCenterMock = {
   domain_1: {
     gwfTimestamp: Date.now(),
-    green: true,
+    green: true
   },
   domain_2: {
     gwfTimestamp: Date.now(),
-    green: false,
+    green: false
   },
   domain_3: {
     gwfTimestamp: Date.now(),
-    green: false,
+    green: false
   },
   domain_4: {
     gwfTimestamp: Date.now(),
-    green: false,
+    green: false
   },
   domain_5: {
     gwfTimestamp: Date.now(),
-    green: true,
+    green: true
   },
   domain_6: {
     gwfTimestamp: Date.now(),
-    green: null,
-  },
+    green: null
+  }
 };
 
 export default dataCenterMock;

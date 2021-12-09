@@ -13,7 +13,7 @@ function PieChart({
   data,
   labelConverter,
   detail,
-  total,
+  total
 }: {
   data: DetailDataObj[] | DataCenterUsageObj[];
   labelConverter: (_value: number) => string;
@@ -34,8 +34,8 @@ function PieChart({
           {
             label: "Others",
             id: "others",
-            value: restValue,
-          },
+            value: restValue
+          }
         ]
       : data;
 
@@ -49,9 +49,7 @@ function PieChart({
         key={total}
         data={shortenedData}
         margin={{ top: 20, right: 40, bottom: 20, left: 40 }}
-        colors={
-          shortenedData[0]?.color ? { datum: "data.color" } : GRAPH_COLORS
-        }
+        colors={shortenedData[0]?.color ? { datum: "data.color" } : GRAPH_COLORS}
         startAngle={43}
         endAngle={-360}
         sortByValue={true}
@@ -77,13 +75,10 @@ function PieChart({
         tooltip={(input) => (
           <Box className="tooltip-container">
             <span className="tooltip-label">
-              {input.datum.label} (
-              {getRounded((input.datum.value / total) * 100, 1)}%)
+              {input.datum.label} ({getRounded((input.datum.value / total) * 100, 1)}%)
             </span>{" "}
             <br />
-            <span className="tooltip-value">
-              {labelConverter(input.datum.value)}
-            </span>
+            <span className="tooltip-value">{labelConverter(input.datum.value)}</span>
           </Box>
         )}
       />
