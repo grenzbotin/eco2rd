@@ -23,19 +23,39 @@ The project landingpage can be found here: https://github.com/grenzbotin/eco2rd-
 -------
 
 ### 📔 Sources & Information
-#### gCO₂eq/kWh  
-- Europe, 2016: https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-5#tab-googlechartid_chart_11_filters=%7B%22rowFilters%22%3A%7B%7D%3B%22columnFilters%22%3A%7B%22pre_config_ugeo%22%3A%5B%22European%20Union%20(current%20composition)%22%5D%7D%7D
+#### Region based GHG/kWh
 
-- US, 2019: https://www.eia.gov/tools/faqs/faq.php?id=74&t=11
+##### Countries
+| Flag  | Country  | Year | Source |
+| ------| ---------| ---- | ------ |
+| 🇦🇷 | Argentina |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Argentina.pdf)|
+| 🇦🇺 | Australia |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Australia.pdf)|
+| 🇧🇷 | Brazil |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Brazil.pdf)|
+| 🇨🇦 | Canada |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Canada.pdf)|
+| 🇨🇳 | China |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_China.pdf)|
+| 🇬🇧 | UK |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_UK.pdf)|
+| 🇮🇳 | India |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_India.pdf)|
+| 🇮🇩 | Indonesia |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Indonesia.pdf)|
+| 🇯🇵 | Japan |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Japan.pdf)|
+| 🇲🇽 | Mexico |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Mexico.pdf)|
+| 🇷🇺 | Russia |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Russia.pdf)|
+| 🇸🇦 | Saudi Arabia |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_SaudiArabia.pdf)|
+| 🇿🇦 | South Africa |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_South_Africa.pdf)|
+| 🇰🇷 | South Korea |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_South_Korea.pdf)|
+| 🇹🇷 | Turkey |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Turkey.pdf)|
 
-- China, 2015: https://ueaeprints.uea.ac.uk/id/eprint/67331/1/Accepted_manuscript.pdf
 
-- World, 2019: https://www.iea.org/reports/global-energy-co2-status-report-2019/emissions
+##### Regions
+| Flag  | Region  | Year | Source |
+| ------| ---------| ---- | ------ |
+| 🇪🇺 | Europe |  2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)|
+| 🇺🇸 | USA |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_USA.pdf)|
+| 🌎 | World |  2018 | [Link](https://www.iea.org/reports/global-energy-co2-status-report-2019/emissions)|
 
 
 #### Renewable Energy
 gCO₂eq/kWh for renewable energy sources
-- https://www.parliament.uk/globalassets/documents/post/postpn_383-carbon-footprint-electricity-generation.pdfs
+- https://gitlab.com/wholegrain/carbon-api-2-0/-/blob/master/includes/carbonapi.php
 
 
 #### In depth: Page Visits

@@ -7,7 +7,7 @@
 // UK, 2018
 // https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_UK.pdf
 //
-// US, 2019
+// US, 2018
 // https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_USA.pdf
 //
 // China, 2018
