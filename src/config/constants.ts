@@ -9,7 +9,7 @@ const LOCAL_KEY_USER = "user";
 export const storageKeys = {
   LOCAL_KEY_DATACENTER,
   LOCAL_KEY_STATS,
-  LOCAL_KEY_USER,
+  LOCAL_KEY_USER
 };
 
 // -----------------------------------------------------------------
@@ -24,7 +24,7 @@ export const REFRESH_RATE_IN_SECONDS = 3;
 export const SCOPES = [
   { name: "Today", value: SCOPE_TODAY },
   { name: "This month", value: SCOPE_MONTH },
-  { name: "Total", value: SCOPE_TOTAL },
+  { name: "Total", value: SCOPE_TOTAL }
 ];
 
 // -----------------------------------------------------------------
@@ -35,7 +35,7 @@ export const DEFAULTS = {
   scope: SCOPE_TODAY,
   co2Region: "WORLD_DEFAULT",
   kwhModifier: "csb",
-  stoppedRecording: false,
+  stoppedRecording: false
 };
 
 // -----------------------------------------------------------------
@@ -55,10 +55,4 @@ export const GIGA_BYTE_IN_BYTES = 1073741824;
 // -----------------------------------------------------------------
 // GRAPH COLORS
 // -----------------------------------------------------------------
-export const GRAPH_COLORS = [
-  "#29f098",
-  "#049bf2",
-  "#d85321",
-  "#f9c82f",
-  "#f87cfe",
-];
+export const GRAPH_COLORS = ["#29f098", "#049bf2", "#d85321", "#f9c82f", "#f87cfe"];

@@ -6,7 +6,7 @@ import "./LottieIllustration.style.scss";
 
 const ANIMATIONS = {
   sleeping: sleeping,
-  waiting: waiting,
+  waiting: waiting
 };
 
 interface LottieIllustrationProps {
@@ -20,7 +20,7 @@ function LottieIllustration({
   type,
   height,
   width,
-  subtitle,
+  subtitle
 }: LottieIllustrationProps): React.ReactElement {
   return (
     <>

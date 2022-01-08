@@ -1,23 +1,23 @@
 const COLORS = {
   green: {
     main: "#9FE865",
-    sub: "#98BF7A",
+    sub: "#98BF7A"
   },
   red: {
     main: "#DA6565",
-    sub: "#9D5656",
+    sub: "#9D5656"
   },
   undefined: {
     main: "#C0C2BE",
-    sub: "#A4A7A3",
-  },
+    sub: "#A4A7A3"
+  }
 };
 
 const Logo = ({
   type = "green",
   width = 92,
   height = 83,
-  alt = "datacenter indicator",
+  alt = "datacenter indicator"
 }: {
   type?: string;
   width?: number;
@@ -62,16 +62,8 @@ const Logo = ({
         stroke="#707070"
         strokeWidth="2.5"
       />
-      <path
-        d="M36 68.984C45.1956 69.1111 50.241 68.5165 59 66"
-        stroke="#707070"
-        strokeWidth="2"
-      />
-      <path
-        d="M38 67C29.8378 62.9972 26.4925 58.0523 22 46"
-        stroke="#707070"
-        strokeWidth="2"
-      />
+      <path d="M36 68.984C45.1956 69.1111 50.241 68.5165 59 66" stroke="#707070" strokeWidth="2" />
+      <path d="M38 67C29.8378 62.9972 26.4925 58.0523 22 46" stroke="#707070" strokeWidth="2" />
     </svg>
   );
 };

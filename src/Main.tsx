@@ -10,7 +10,7 @@ import Result from "container";
 
 function MainContentSwitch(): React.ReactElement {
   const {
-    settings: { stoppedRecording },
+    settings: { stoppedRecording }
   } = useUserSettings();
 
   const content = {
@@ -29,7 +29,7 @@ function MainContentSwitch(): React.ReactElement {
           <Result />
         </RouteProvider>
       </>
-    ),
+    )
   };
 
   return content[stoppedRecording.toString()];

@@ -20,23 +20,21 @@ function ResultDetail(): React.ReactElement {
   const { settings } = useUserSettings();
   const {
     setRoute,
-    route: { origin },
+    route: { origin }
   } = useRoute();
   const { stats } = useStats();
   const { dataCenter } = useDataCenter();
 
-  const { co2DataCenter, co2Transmission, bytes, kwhTotal } =
-    getCo2EquivalentDetail(
-      stats,
-      settings.scope,
-      settings.co2Region,
-      dataCenter,
-      settings.kwhModifier,
-      origin
-    );
+  const { co2DataCenter, co2Transmission, bytes, kwhTotal } = getCo2EquivalentDetail(
+    stats,
+    settings.scope,
+    settings.co2Region,
+    dataCenter,
+    settings.kwhModifier,
+    origin
+  );
 
-  const totalVisits =
-    (stats[origin] && stats[origin][settings.scope]?.visits) || 0;
+  const totalVisits = (stats[origin] && stats[origin][settings.scope]?.visits) || 0;
   const externalResources =
     (stats[origin] &&
       stats[origin][settings.scope]?.external &&
@@ -59,11 +57,7 @@ function ResultDetail(): React.ReactElement {
         </div>
       </div>
       <div className="details-wrapper">
-        <UsageData
-          co2={co2DataCenter + co2Transmission}
-          bytes={bytes}
-          kwhTotal={kwhTotal}
-        />
+        <UsageData co2={co2DataCenter + co2Transmission} bytes={bytes} kwhTotal={kwhTotal} />
         <div className="visits-wrapper">
           <img src={refreshImage} height={22} width={22} alt="refresh symbol" />
           <div>
@@ -78,31 +72,20 @@ function ResultDetail(): React.ReactElement {
         />
         {totalVisits > 0 && (
           <div className="visits-wrapper">
-            <img
-              src={averageImage}
-              height={22}
-              width={22}
-              alt="average symbol"
-            />
+            <img src={averageImage} height={22} width={22} alt="average symbol" />
             <div>
-              The website triggered{" "}
-              {externalResources.length === 1 ? "a request" : "requests"} to{" "}
-              <span className="highlight-number">
-                {externalResources.length}
-              </span>{" "}
-              external{" "}
+              The website triggered {externalResources.length === 1 ? "a request" : "requests"} to{" "}
+              <span className="highlight-number">{externalResources.length}</span> external{" "}
               {externalResources.length === 1 ? "resource" : "resources"}
               {externalResources.length > 0 && (
                 <>
                   :{" "}
                   <ul>
                     {externalResources.map((key: string) => {
-                      const bytesPerResource =
-                        stats[origin][settings.scope]?.external[key];
+                      const bytesPerResource = stats[origin][settings.scope]?.external[key];
                       return (
                         <li key={key}>
-                          {shortenUrl(key)}:{" "}
-                          {getConvertedBytes(bytesPerResource)} (
+                          {shortenUrl(key)}: {getConvertedBytes(bytesPerResource)} (
                           {getRounded((bytesPerResource / bytes) * 100)}%)
                         </li>
                       );

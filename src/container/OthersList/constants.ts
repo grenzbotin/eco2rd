@@ -1,14 +1,14 @@
 export const OTHERS_TABLE_COLUMNS = [
   {
-    name: "Origin",
+    name: "Origin"
   },
   {
-    id: "co2",
+    id: "co2"
   },
   {
-    id: "download",
+    id: "download"
   },
   {
-    id: "electricity",
-  },
+    id: "electricity"
+  }
 ];

@@ -8,7 +8,7 @@ const getNodeByOrigin = (origin?: string) => {
   const child = {
     [+true]: <Detail />,
     [+(origin === "others")]: <OthersList />,
-    [+!origin]: null,
+    [+!origin]: null
   }[1];
 
   return child;
@@ -16,13 +16,13 @@ const getNodeByOrigin = (origin?: string) => {
 
 function ResultRoute(): React.ReactElement {
   const {
-    route: { type, origin },
+    route: { type, origin }
   } = useRoute();
 
   const content = {
     all: <Overview />,
     node: getNodeByOrigin(origin),
-    datacenter: <DataCenter />,
+    datacenter: <DataCenter />
   };
 
   return content[type];

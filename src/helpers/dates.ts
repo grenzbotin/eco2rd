@@ -11,7 +11,7 @@ const checkForDay = (timestamp: Date, scope: string): boolean | undefined => {
   return {
     [SCOPE_TODAY]: today === thatDay,
     [SCOPE_MONTH]: thisMonth === thatMonth,
-    [SCOPE_TOTAL]: true,
+    [SCOPE_TOTAL]: true
   }[scope];
 };
 
