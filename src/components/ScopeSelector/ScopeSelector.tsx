@@ -3,6 +3,7 @@ import { Tabs } from "react-bulma-components";
 
 import { SCOPES } from "config/constants";
 import { useUserSettings } from "context/userContext";
+import "./ScopeSelector.style.scss";
 
 function ScopeSelector(): React.ReactElement {
   const {
@@ -15,7 +16,7 @@ function ScopeSelector(): React.ReactElement {
   };
 
   return (
-    <Tabs align="right" size="small" type="toggle">
+    <Tabs align="right" size="small" type="toggle" className="tabs-wrapper">
       {SCOPES.map((content) => (
         <Tabs.Tab
           key={content.name}

@@ -62,6 +62,10 @@ const convertMass = (value: number): { divisor: number; unit: string } => {
   }
 };
 
+const getGBFromBytes = (value: number): number => {
+  return value / GIGA_BYTE_IN_BYTES;
+};
+
 const getConvertedBytes = (value: number): string => {
   const { divisor, unit } = convertBytes(value);
 
@@ -77,7 +81,7 @@ const getConvertedKwh = (value: number): string => {
 const getConvertedMass = (value: number): string => {
   const { divisor, unit } = convertMass(value);
 
-  return `${getRounded(value / divisor)}${unit} CO₂`;
+  return `${getRounded(value / divisor)}${unit}`;
 };
 
 const getConvertedNumber = (value: number): string => {
@@ -124,5 +128,6 @@ export {
   getRounded,
   getKWHPerGB,
   getCo2InLitres,
-  getRoughSizeOfObject
+  getRoughSizeOfObject,
+  getGBFromBytes
 };

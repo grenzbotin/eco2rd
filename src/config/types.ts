@@ -55,6 +55,16 @@ export interface DataCenterUsageObj {
   color?: string;
 }
 
+export interface HistoricalMonthObj {
+  [key: number]: {
+    green: number;
+    total: number;
+  };
+}
+export interface HistoricalObj {
+  [key: number]: HistoricalMonthObj;
+}
+
 export interface UserObj {
   co2Region: string;
   scope: string;
@@ -67,7 +77,7 @@ export type Callback = (
   reject: (value: unknown) => void
 ) => void;
 
-export type StorageData = DataObj | DatacenterObj | UserObj;
+export type StorageData = DataObj | DatacenterObj | UserObj | HistoricalObj;
 
 export type VoidFunction = () => void;
 

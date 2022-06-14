@@ -59,7 +59,7 @@ function PieChart({
         activeOuterRadiusOffset={8}
         arcLinkLabelsSkipAngle={45}
         arcLinkLabelsTextOffset={3}
-        arcLinkLabelsTextColor="#6d6e6a"
+        arcLinkLabelsTextColor="#90918c"
         arcLinkLabelsOffset={8}
         arcLinkLabelsDiagonalLength={3}
         arcLinkLabelsStraightLength={3}

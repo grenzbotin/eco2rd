@@ -27,7 +27,7 @@ function TableRow({ item }: { item: DetailDataObj }): React.ReactElement {
           size="small"
           onClick={() => setRoute({ type: "node", origin: item.id })}
         >
-          <span className="icon-arrow-circle-o-right" />
+          <span className="icon-circle-right" />
         </Button>
       </td>
     </tr>
@@ -58,7 +58,7 @@ function ResultTable(): React.ReactElement {
           size="small"
           onClick={() => setRoute({ type: RESULT_ROUTE_OVERVIEW, origin: "" })}
         >
-          <span className="icon-arrow-circle-o-left" />
+          <span className="icon-circle-left" />
         </Button>
         <div className="title-wrapper">
           <h1 className="detail-title">Others</h1>

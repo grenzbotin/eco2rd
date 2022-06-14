@@ -28,7 +28,7 @@ function TableRow({ item, url }: { item: DatacenterItem; url: string }): React.R
           size="small"
           onClick={() => setRoute({ type: "node", origin: url })}
         >
-          <span className="icon-arrow-circle-o-right" />
+          <span className="icon-circle-right" />
         </Button>
       </td>
     </tr>
@@ -63,7 +63,7 @@ function ResultDataCenter(): React.ReactElement {
           size="small"
           onClick={() => setRoute({ type: RESULT_ROUTE_OVERVIEW, origin: "" })}
         >
-          <span className="icon-arrow-circle-o-left" />
+          <span className="icon-circle-left" />
         </Button>
         <div className="title-wrapper">
           <h1 className="detail-title">Datacenter</h1>

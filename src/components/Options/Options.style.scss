@@ -1,12 +1,20 @@
 @import 'config/theme.scss';
 
+.options-wrapper > .field .label {
+  color: $grey-dark;
+}
+
+.field .control .icon.has-text-green-light {
+  color: $green-light;
+}
+
 .options-wrapper {
   height: fit-content;
   width: fit-content;
   position: absolute;
   padding: 1rem;
   right: 1.5rem;
-  z-index: 2;
+  z-index: 5;
 }
 
 .btn-close {
@@ -35,6 +43,9 @@
   align-items: flex-end;
   button {
     margin-left: 1rem;
+  }
+  a:hover,:focus {
+    color: #FEFAE0,
   }
 }
 

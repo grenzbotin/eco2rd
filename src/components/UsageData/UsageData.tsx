@@ -90,7 +90,7 @@ function UsageData({
                 size="small"
                 onClick={() => setSelected(undefined)}
               >
-                <span className="icon-close" />
+                <span className="icon-cross" />
               </Button>
             </div>
             <p className="category-label">

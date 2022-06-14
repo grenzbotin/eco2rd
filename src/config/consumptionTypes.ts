@@ -21,7 +21,7 @@ const TYPES = {
   co2: {
     alt: "CO₂ letters",
     image: co2Image,
-    title: "CO₂",
+    title: "CO₂eq",
     convert: getConvertedMass,
     equivalents: [
       {
