@@ -242,6 +242,8 @@ const transformToStatistics = async ({ size, origin, sub }) => {
     }
   };
 
+  /* Historical data storage */
+
   const historical = (await getFromStorage(LOCAL_KEY_HISTORICAL)) || {};
   const dataCenter = (await getFromStorage(LOCAL_KEY_DATACENTER)) || {};
 

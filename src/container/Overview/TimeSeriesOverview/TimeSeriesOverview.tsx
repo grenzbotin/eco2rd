@@ -5,7 +5,7 @@ import { Box, Form, Icon } from "react-bulma-components";
 
 import LoadingIndicator from "components/LoadingIndicator";
 import { useHistorical } from "hooks/useHistorical";
-import { REFRESH_RATE_TIMESERIES_IN_SECONDS } from "config/constants";
+import { REFRESH_RATE_IN_SECONDS } from "config/constants";
 import { getRounded } from "helpers/numbers";
 import { TIME_SERIES_CO2EQ, TIME_SERIES_SCOPES } from "./TimeSeriesOverview.constants";
 import "./TimeSeriesOverview.style.scss";
@@ -25,7 +25,7 @@ function TimeSeriesOverview(): React.ReactElement {
   useEffect(() => {
     const intervalId = setInterval(() => {
       loadHistorical();
-    }, REFRESH_RATE_TIMESERIES_IN_SECONDS * 1000);
+    }, REFRESH_RATE_IN_SECONDS * 1000);
     return () => clearInterval(intervalId);
   }, [loadHistorical]);
 
@@ -119,11 +119,11 @@ function TimeSeriesOverview(): React.ReactElement {
                   }}
                   axisLeft={{
                     tickSize: 5,
-                    tickPadding: 5,
+                    tickPadding: 3,
                     tickRotation: 0,
                     legend: chart.axisLeftLabel,
                     legendPosition: "middle",
-                    legendOffset: -40
+                    legendOffset: -50
                   }}
                   tooltip={({ data }: any) => {
                     return (

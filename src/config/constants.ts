@@ -22,7 +22,6 @@ export const SCOPE_TODAY = "today";
 export const SCOPE_MONTH = "month";
 export const SCOPE_HISTORICAL = "historical";
 export const REFRESH_RATE_IN_SECONDS = 10;
-export const REFRESH_RATE_TIMESERIES_IN_SECONDS = 30;
 
 export const SCOPES = [
   { name: "Today", value: SCOPE_TODAY },
