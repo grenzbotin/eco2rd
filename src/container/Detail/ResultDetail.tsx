@@ -74,7 +74,7 @@ function ResultDetail(): React.ReactElement {
           <div className="visits-wrapper">
             <img src={averageImage} height={22} width={22} alt="average symbol" />
             <div>
-              The website triggered {externalResources.length === 1 ? "a request" : "requests"} to{" "}
+              The website received data from{" "}
               <span className="highlight-number">{externalResources.length}</span> external{" "}
               {externalResources.length === 1 ? "resource" : "resources"}
               {externalResources.length > 0 && (

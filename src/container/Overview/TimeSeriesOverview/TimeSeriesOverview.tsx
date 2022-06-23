@@ -42,7 +42,7 @@ function TimeSeriesOverview(): React.ReactElement {
               height="281px"
               width="290px"
               type="waiting"
-              subtitle="still collecting data.."
+              subtitle="Still collecting data.."
             />
           ) : (
             <>

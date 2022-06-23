@@ -9,7 +9,8 @@
     "storage",
     "unlimitedStorage",
     "webRequest",
-    "activeTab"
+    "activeTab",
+    "alarms"
   ],
   "background": {
     "service_worker": "./background.js"

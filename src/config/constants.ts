@@ -20,7 +20,7 @@ export const storageKeys = {
 
 export const SCOPE_TODAY = "today";
 export const SCOPE_MONTH = "month";
-export const SCOPE_HISTORICAL = "historical";
+export const SCOPE_HISTORICAL = "total";
 export const REFRESH_RATE_IN_SECONDS = 10;
 
 export const SCOPES = [

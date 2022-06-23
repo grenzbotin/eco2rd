@@ -65,9 +65,9 @@ const TYPES = {
         alt: "Desktop PC illustration",
         key: "desktop page",
         convert: (bytes: number): string =>
-          `we have the size of ${getConvertedNumber(
+          `a person could have visited ${getConvertedNumber(
             bytes / utils.BYTES_MEDIAN_DESKTOP_PAGE_2010
-          )} average desktop pages in 2010 (~400KB).`
+          )} average desktop pages in 2010 (~400KB per page).`
       }
     ]
   },

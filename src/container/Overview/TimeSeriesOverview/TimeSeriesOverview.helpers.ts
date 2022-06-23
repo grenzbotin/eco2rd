@@ -34,7 +34,7 @@ const calculateDownloadGraphData = (consumption: HistoricalMonthObj): DownloadGr
     return {
       ...month,
       green: greenDownload,
-      total: greenDownload + greyDownload,
+      total: getGBFromBytes(consumption[month.key]?.total || 0),
       grey: greyDownload
     };
   });
