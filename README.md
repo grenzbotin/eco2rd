@@ -1,7 +1,7 @@
 ![image](https://raw.githubusercontent.com/grenzbotin/eco2rd/b254ac6c6f105b9d115df6bd105c07314353b012/src/assets/logo_word_mark.svg?raw=true)
 
 ## eco₂rd
-##### CO₂ footprint for browser traffic based data consumption
+##### CO₂eq footprint for browser traffic based data consumption
 
 ----
 
@@ -12,7 +12,12 @@ After cloning the repo, you can simply to a `yarn start`. This will run the pop 
 
 #### Development build
 In order to use the extension for testing purposes, you can create an unpacked dev build via `yarn build-dev`.
-This will create a folder `build_dev` that can be load as unpacked extension the browser.
+This will create a folder `build_dev` that can be load as unpacked extension into the browser extension manager.
+
+Example Chrome:
+1. Open `chrome://extensions/`
+2. Enable developer mode
+3. Click on "load unpacked" 
 
 -------
 

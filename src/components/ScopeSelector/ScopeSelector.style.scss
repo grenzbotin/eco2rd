@@ -1,0 +1,5 @@
+.tabs.tabs-wrapper {
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}

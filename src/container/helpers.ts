@@ -1,5 +1,6 @@
 import { utils } from "config/carbon";
 import {
+  GRAPH_COLORS_DATA_CENTER,
   PERCENTAGE_OF_ENERGY_IN_DATACENTER,
   PERCENTAGE_OF_ENERGY_IN_TRANSMISSION_AND_END_USER
 } from "config/constants";
@@ -116,7 +117,7 @@ const getGreenDataCenterUsage = (detailData: DetailDataObj[]): DataCenterUsageOb
         .reduce((sum, current) => {
           return sum + current.dataCenter;
         }, 0),
-      color: "#29f098"
+      color: GRAPH_COLORS_DATA_CENTER.green
     },
     {
       label: "Grey",
@@ -126,7 +127,7 @@ const getGreenDataCenterUsage = (detailData: DetailDataObj[]): DataCenterUsageOb
         .reduce((sum, current) => {
           return sum + current.dataCenter;
         }, 0),
-      color: "#A4A7A3"
+      color: GRAPH_COLORS_DATA_CENTER.grey
     }
   ];
 };

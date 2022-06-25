@@ -5,11 +5,13 @@
 const LOCAL_KEY_DATACENTER = "datacenter";
 const LOCAL_KEY_STATS = "stats";
 const LOCAL_KEY_USER = "user";
+const LOCAL_KEY_HISTORICAL = "historical";
 
 export const storageKeys = {
   LOCAL_KEY_DATACENTER,
   LOCAL_KEY_STATS,
-  LOCAL_KEY_USER
+  LOCAL_KEY_USER,
+  LOCAL_KEY_HISTORICAL
 };
 
 // -----------------------------------------------------------------
@@ -18,13 +20,13 @@ export const storageKeys = {
 
 export const SCOPE_TODAY = "today";
 export const SCOPE_MONTH = "month";
-export const SCOPE_TOTAL = "total";
-export const REFRESH_RATE_IN_SECONDS = 3;
+export const SCOPE_HISTORICAL = "total";
+export const REFRESH_RATE_IN_SECONDS = 10;
 
 export const SCOPES = [
   { name: "Today", value: SCOPE_TODAY },
   { name: "This month", value: SCOPE_MONTH },
-  { name: "Total", value: SCOPE_TOTAL }
+  { name: "Historical", value: SCOPE_HISTORICAL }
 ];
 
 // -----------------------------------------------------------------
@@ -56,3 +58,7 @@ export const GIGA_BYTE_IN_BYTES = 1073741824;
 // GRAPH COLORS
 // -----------------------------------------------------------------
 export const GRAPH_COLORS = ["#29f098", "#049bf2", "#d85321", "#f9c82f", "#f87cfe"];
+export const GRAPH_COLORS_DATA_CENTER: Record<string, string> = {
+  green: "#29f098",
+  grey: "#A4A7A3"
+};

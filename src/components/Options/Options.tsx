@@ -10,6 +10,7 @@ import { getConvertedBytes, getRoughSizeOfObject } from "helpers/numbers";
 import { sortObjectArrayByKey } from "helpers/utils";
 
 import "./Options.style.scss";
+import { useHistorical } from "hooks/useHistorical";
 
 const { Field, Control, Label, Select } = Form;
 
@@ -17,12 +18,16 @@ function Options(): React.ReactElement {
   const [showSetting, setShowSetting] = useState(false);
   const { settings, setSettingsPerKey } = useUserSettings();
   const { stats, deleteStats } = useStats();
+  const { historical, deleteHistorical } = useHistorical();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>, key: string) => {
     setSettingsPerKey(key, e.target.value);
   };
 
-  const handleDelete = () => deleteStats();
+  const handleDelete = () => {
+    deleteStats();
+    deleteHistorical();
+  };
 
   const handleChangeRecording = () => {
     setSettingsPerKey("stoppedRecording", !settings.stoppedRecording);
@@ -32,7 +37,7 @@ function Options(): React.ReactElement {
     <Box className="options-wrapper">
       <div className="btn-close">
         <Button aria-label="close settings" size="small" onClick={() => setShowSetting(false)}>
-          <span className="icon-close" />
+          <span className="icon-cancel-circle" />
         </Button>
       </div>
       <Field>
@@ -49,7 +54,7 @@ function Options(): React.ReactElement {
               </option>
             ))}
           </Select>
-          <Icon align="left" size="small" color="grey-light">
+          <Icon align="left" size="small" color="green-light">
             <span className="icon-earth" />
           </Icon>
         </Control>
@@ -68,23 +73,22 @@ function Options(): React.ReactElement {
               </option>
             ))}
           </Select>
-          <Icon align="left" size="small" color="grey-light">
-            <span className="icon-flash" />
+          <Icon align="left" size="small" color="green-light">
+            <span className="icon-power" />
           </Icon>
         </Control>
       </Field>
       <Button.Group className="buttons">
         <Button size="small" onClick={handleChangeRecording}>
           <span
-            className={`button-icon ${
-              settings.stoppedRecording ? "icon-play-circle-o" : "icon-pause-circle-o"
-            }`}
+            className={`button-icon ${settings.stoppedRecording ? "icon-play2" : "icon-pause"}`}
           />
           {settings.stoppedRecording ? "Start" : "Pause"} recording
         </Button>
         <Button size="small" onClick={handleDelete}>
-          <span className="button-icon icon-trash-o" />
-          Delete consumption data ( ~{getConvertedBytes(getRoughSizeOfObject(stats))})
+          <span className="button-icon icon-bin" />
+          Delete consumption data ( ~
+          {getConvertedBytes(getRoughSizeOfObject(stats) + getRoughSizeOfObject(historical))})
         </Button>
       </Button.Group>
       <p className="version-number">v{process?.env?.REACT_APP_VERSION}</p>
@@ -96,7 +100,7 @@ function Options(): React.ReactElement {
       </a>
       <div className="btn-open">
         <Button aria-label="open settings" size="small" onClick={() => setShowSetting(true)}>
-          <span className="icon-gears" />
+          <span className="icon-cogs" />
         </Button>
       </div>
     </div>

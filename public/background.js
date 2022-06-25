@@ -7,21 +7,16 @@ importScripts("./keepAlive.js");
 // -------------------------------------------------
 
 // Green web foundation
-const GREEN_WEB_FOUNDATION_API =
-  "https://api.thegreenwebfoundation.org/greencheck";
+const GREEN_WEB_FOUNDATION_API = "https://api.thegreenwebfoundation.org/greencheck";
 const REFRESH_DAYS_GREEN_WEB_FOUNDATION = 7; // wait for $value until fetching data from GWF again
 
 // Storage
 const LOCAL_KEY_DATACENTER = "datacenter";
 const LOCAL_KEY_STATS = "stats";
+const LOCAL_KEY_HISTORICAL = "historical";
 const LOCAL_KEY_USER = "user";
 
-const EXCLUDED_URLS = [
-  "chrome-extension",
-  "localhost",
-  "127.0.0.1",
-  "extensions",
-];
+const EXCLUDED_URLS = ["chrome-extension", "localhost", "127.0.0.1", "extensions"];
 const isChrome = typeof browser === "undefined";
 
 // -----------------------------------------------------------------
@@ -37,10 +32,11 @@ const checkForDay = (timestamp) => {
   const thatMonth = new Date(thatDay).setDate(1);
 
   return {
+    today: new Date(),
     isToday: today === thatDay,
     thisDay: today,
     isThisMonth: thisMonth === thatMonth,
-    thisMonth: thisMonth,
+    thisMonth: thisMonth
   };
 };
 
@@ -103,7 +99,6 @@ const clearFromStorage = async (key) => {
 const handleMessage = (message, sender, sendResponse) => {
   switch (message.type) {
     case "bglog":
-      console.log(message.obj);
       break;
     case "getLocalStorage":
       sendResponse({ data: getFromStorage(message.key) });
@@ -114,6 +109,8 @@ const handleMessage = (message, sender, sendResponse) => {
 };
 
 chrome.runtime.onMessage.addListener(handleMessage);
+
+let statsQueue = [];
 
 // -----------------------------------------------------------------
 // Receive and store transmitted data
@@ -132,9 +129,7 @@ const getRequestSize = (requestData) => {
     // Non chrome support
     // Sadly, manifest v3 is not supported widely, so we need to wait
     // eslint-disable-next-line no-undef
-    const filter = browser?.webRequest?.filterResponseData(
-      requestData.requestId
-    );
+    const filter = browser?.webRequest?.filterResponseData(requestData.requestId);
     filter.ondata = (event) => {
       bytesTransfered = event.data.byteLength;
 
@@ -156,15 +151,14 @@ const getTabDetails = async (tabId, requestData, resolve, reject) => {
       if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
       if (tab?.url && isUrl(tab.url)) {
         originalSource = getHostname(tab.url);
-        const subSource =
-          getHostname(requestData.url) || getHostname(requestData.initiator);
+        const subSource = getHostname(requestData.url) || getHostname(requestData.initiator);
 
         const size = getRequestSize(requestData);
         if (size > 0) {
           resolve({
             size,
             origin: originalSource,
-            sub: subSource !== originalSource ? subSource : null,
+            sub: subSource !== originalSource ? subSource : null
           });
         }
       } else reject(new Error("requested tab url was not valid"));
@@ -184,93 +178,127 @@ const getRequestDetails = (requestData) => {
   });
 };
 
-const transformToStatistics = async ({ size, origin, sub }) => {
-  let updatedStats;
-  const statistics = (await getFromStorage(LOCAL_KEY_STATS)) || {};
+const putToStatsQueue = ({ size, origin, sub }) => {
+  statsQueue.push({ size, origin, sub });
+};
 
-  const { isToday, thisDay, isThisMonth, thisMonth } = checkForDay(
-    statistics[origin]?.today?.lastDate
-  );
+const transformToStatistics = ({ size, origin, sub }) => {
+  return toPromise(async (resolve) => {
+    let updatedStats;
+    const statistics = (await getFromStorage(LOCAL_KEY_STATS)) || {};
 
-  // In evaluation, we add the external resources to the byte transfer by origin
-  // This will result in a slight miss-calculation for the actual data transfer co2 equivalent
-  // since the external sources could be hosted on other data center types than the origin
-  const today = {
-    ...statistics[origin]?.today,
-    size: isToday ? (statistics[origin]?.today?.size || 0) + size : size,
-    ...(sub && {
-      external: {
-        ...statistics[origin]?.today?.external,
-        [sub]: isToday
-          ? ((statistics[origin]?.today?.external &&
-              statistics[origin]?.today?.external[sub]) ||
-              0) + size
-          : (statistics[origin]?.today?.external &&
-              statistics[origin]?.today?.external[sub]) ||
-            0,
-      },
-    }),
-    lastDate: thisDay,
-  };
+    const {
+      today: todayDate,
+      isToday,
+      thisDay,
+      isThisMonth,
+      thisMonth
+    } = checkForDay(statistics[origin]?.today?.lastDate);
 
-  const month = {
-    ...statistics[origin]?.month,
-    size: isThisMonth ? (statistics[origin]?.month?.size || 0) + size : size,
-    ...(sub && {
-      external: {
-        ...statistics[origin]?.month?.external,
-        [sub]: isThisMonth
-          ? ((statistics[origin]?.month?.external &&
-              statistics[origin]?.month?.external[sub]) ||
-              0) + size
-          : (statistics[origin]?.month?.external &&
-              statistics[origin]?.month?.external[sub]) ||
-            0,
-      },
-    }),
-    lastDate: thisMonth,
-  };
+    // In evaluation, we add the external resources to the byte transfer by origin
+    // This will result in a slight miss-calculation for the actual data transfer co2 equivalent
+    // since the external sources could be hosted on other data center types than the origin
+    const today = {
+      ...statistics[origin]?.today,
+      size: isToday ? (statistics[origin]?.today?.size || 0) + size : size,
+      ...(sub && {
+        external: {
+          ...statistics[origin]?.today?.external,
+          [sub]: isToday
+            ? ((statistics[origin]?.today?.external && statistics[origin]?.today?.external[sub]) ||
+                0) + size
+            : (statistics[origin]?.today?.external && statistics[origin]?.today?.external[sub]) || 0
+        }
+      }),
+      lastDate: thisDay
+    };
 
-  updatedStats = {
-    ...statistics,
-    [origin]: {
-      ...statistics[origin],
-      today,
-      month,
-      total: {
-        ...statistics[origin]?.total,
-        size: (statistics[origin]?.total?.size || 0) + size,
-        ...(sub && {
-          external: {
-            ...statistics[origin]?.total?.external,
-            [sub]:
-              ((statistics[origin]?.total?.external &&
-                statistics[origin]?.total?.external[sub]) ||
-                0) + size,
-          },
-        }),
-      },
-    },
-  };
+    const month = {
+      ...statistics[origin]?.month,
+      size: isThisMonth ? (statistics[origin]?.month?.size || 0) + size : size,
+      ...(sub && {
+        external: {
+          ...statistics[origin]?.month?.external,
+          [sub]: isThisMonth
+            ? ((statistics[origin]?.month?.external && statistics[origin]?.month?.external[sub]) ||
+                0) + size
+            : (statistics[origin]?.month?.external && statistics[origin]?.month?.external[sub]) || 0
+        }
+      }),
+      lastDate: thisMonth
+    };
 
-  saveInStorage(LOCAL_KEY_STATS, updatedStats);
+    updatedStats = {
+      ...statistics,
+      [origin]: {
+        ...statistics[origin],
+        today,
+        month,
+        total: {
+          ...statistics[origin]?.total,
+          size: (statistics[origin]?.total?.size || 0) + size,
+          ...(sub && {
+            external: {
+              ...statistics[origin]?.total?.external,
+              [sub]:
+                ((statistics[origin]?.total?.external &&
+                  statistics[origin]?.total?.external[sub]) ||
+                  0) + size
+            }
+          })
+        }
+      }
+    };
+
+    await saveInStorage(LOCAL_KEY_STATS, updatedStats);
+
+    /* Historical data storage */
+
+    const historical = (await getFromStorage(LOCAL_KEY_HISTORICAL)) || {};
+    const dataCenter = (await getFromStorage(LOCAL_KEY_DATACENTER)) || {};
+
+    const updatedHistorical = {
+      ...historical,
+      [todayDate.getFullYear()]: {
+        ...(historical[todayDate.getFullYear()] || {}),
+        [todayDate.getMonth()]: {
+          total:
+            ((
+              historical[todayDate.getFullYear()] &&
+              historical[todayDate.getFullYear()][todayDate.getMonth()]
+            )?.total || 0) + size,
+          green: dataCenter[origin]?.green
+            ? ((
+                historical[todayDate.getFullYear()] &&
+                historical[todayDate.getFullYear()][todayDate.getMonth()]
+              )?.green || 0) + size
+            : (
+                historical[todayDate.getFullYear()] &&
+                historical[todayDate.getFullYear()][todayDate.getMonth()]
+              )?.green || 0
+        }
+      }
+    };
+
+    await saveInStorage(LOCAL_KEY_HISTORICAL, updatedHistorical);
+
+    resolve(true);
+  });
 };
 
 const headersReceivedListener = (requestData) => {
   getFromStorage(LOCAL_KEY_USER).then((res) => {
     if (!res || !res.stoppedRecording) {
       getRequestDetails(requestData)
-        .then((res) => res && transformToStatistics(res))
+        .then((res) => res && putToStatsQueue(res))
         .catch((err) => console.log(err));
     }
   });
 };
 
-chrome.webRequest.onHeadersReceived.addListener(
-  headersReceivedListener,
-  { urls: ["<all_urls>"] },
-  ["responseHeaders"]
-);
+chrome.webRequest.onHeadersReceived.addListener(headersReceivedListener, { urls: ["<all_urls>"] }, [
+  "responseHeaders"
+]);
 
 // -----------------------------------------------------------------
 // ACTIVE TAB CHANGE HANDLING
@@ -290,14 +318,12 @@ const shouldFetchGWFData = async (origin) => {
   const dataCenter = (await getFromStorage(LOCAL_KEY_DATACENTER)) || {};
 
   const shouldLoadGWFData =
-    !dataCenter ||
-    !dataCenter[origin] ||
-    shouldRenewGWFData(dataCenter[origin]?.gwfTimestamp);
+    !dataCenter || !dataCenter[origin] || shouldRenewGWFData(dataCenter[origin]?.gwfTimestamp);
 
   return {
     shouldFetch: shouldLoadGWFData,
     green: dataCenter[origin]?.green,
-    dataCenter,
+    dataCenter
   };
 };
 
@@ -315,8 +341,8 @@ const fetchGreenStatus = async (origin) => {
           [origin]: {
             ...dataCenter[origin],
             gwfTimestamp: Date.now(),
-            green: data.green,
-          },
+            green: data.green
+          }
         };
         saveInStorage(LOCAL_KEY_DATACENTER, updatedStats);
         return data.green;
@@ -326,8 +352,8 @@ const fetchGreenStatus = async (origin) => {
           ...dataCenter,
           [origin]: {
             ...dataCenter[origin],
-            green: null,
-          },
+            green: null
+          }
         };
 
         saveInStorage(LOCAL_KEY_DATACENTER, updatedStats);
@@ -343,18 +369,16 @@ const increasePageVisits = async (origin) => {
 
   const statistics = (await getFromStorage(LOCAL_KEY_STATS)) || {};
 
-  const { isToday, isThisMonth } = checkForDay(
-    statistics[origin]?.today?.lastDate
-  );
+  const { isToday, isThisMonth } = checkForDay(statistics[origin]?.today?.lastDate);
 
   const today = {
     ...statistics[origin]?.today,
-    visits: isToday ? (statistics[origin]?.today?.visits || 0) + 1 : 1,
+    visits: isToday ? (statistics[origin]?.today?.visits || 0) + 1 : 1
   };
 
   const month = {
     ...statistics[origin]?.month,
-    visits: isThisMonth ? (statistics[origin]?.month?.visits || 0) + 1 : 1,
+    visits: isThisMonth ? (statistics[origin]?.month?.visits || 0) + 1 : 1
   };
 
   updatedStats = {
@@ -365,9 +389,9 @@ const increasePageVisits = async (origin) => {
       month,
       total: {
         ...statistics[origin]?.total,
-        visits: (statistics[origin]?.total?.visits || 0) + 1,
-      },
-    },
+        visits: (statistics[origin]?.total?.visits || 0) + 1
+      }
+    }
   };
 
   saveInStorage(LOCAL_KEY_STATS, updatedStats);
@@ -389,24 +413,21 @@ const getTabInfo = (tabId) => {
             const icon = {
               null: "undefined",
               false: "red",
-              true: "green",
+              true: "green"
             };
             const { shouldFetch, green } = await shouldFetchGWFData(origin);
 
             chrome.action.setIcon({
-              path: `/images/datacenter_${icon[green]}.png`,
+              path: `/images/datacenter_${icon[green]}.png`
             });
 
-            if (
-              tab.status === "complete" &&
-              lastActiveTabStatus !== "complete"
-            ) {
+            if (tab.status === "complete" && lastActiveTabStatus !== "complete") {
               await increasePageVisits(origin);
               if (shouldFetch) {
                 lastUrl = tab.url;
                 const green = await fetchGreenStatus(origin);
                 chrome.action.setIcon({
-                  path: `/images/datacenter_${icon[green]}.png`,
+                  path: `/images/datacenter_${icon[green]}.png`
                 });
               }
             }
@@ -426,6 +447,25 @@ chrome.tabs.onUpdated.addListener((tabId) => {
   if (activeTabId == tabId) {
     getTabInfo(tabId);
   }
+});
+
+// Going through queue and transform to statistics
+const resolveStatsQueue = async () => {
+  while (statsQueue.length > 0) {
+    await transformToStatistics(statsQueue[0]);
+    statsQueue.shift();
+  }
+};
+
+// TIME EVENT
+chrome.alarms.create("progressQueue", { when: Date.now() + 5000, periodInMinutes: 1 });
+
+chrome.alarms.onAlarm.addListener(({ name }) => {
+  const alarmAction = {
+    progressQueue: resolveStatsQueue
+  };
+
+  alarmAction[name]();
 });
 
 keepAlive();

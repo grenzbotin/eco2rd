@@ -49,7 +49,7 @@ function ResultDetail(): React.ReactElement {
           size="small"
           onClick={() => setRoute({ type: RESULT_ROUTE_OVERVIEW, origin: "" })}
         >
-          <span className="icon-arrow-circle-o-left" />
+          <span className="icon-circle-left" />
         </Button>
         <div className="title-wrapper">
           <h1 className="detail-title">{origin}</h1>
@@ -74,7 +74,7 @@ function ResultDetail(): React.ReactElement {
           <div className="visits-wrapper">
             <img src={averageImage} height={22} width={22} alt="average symbol" />
             <div>
-              The website triggered {externalResources.length === 1 ? "a request" : "requests"} to{" "}
+              The website received data from{" "}
               <span className="highlight-number">{externalResources.length}</span> external{" "}
               {externalResources.length === 1 ? "resource" : "resources"}
               {externalResources.length > 0 && (

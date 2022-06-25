@@ -1,4 +1,4 @@
-import { SCOPE_MONTH, SCOPE_TODAY, SCOPE_TOTAL } from "config/constants";
+import { SCOPE_HISTORICAL, SCOPE_MONTH, SCOPE_TODAY } from "config/constants";
 
 const getBoD = (time: Date): number => time.setHours(0, 0, 0, 0);
 
@@ -11,7 +11,7 @@ const checkForDay = (timestamp: Date, scope: string): boolean | undefined => {
   return {
     [SCOPE_TODAY]: today === thatDay,
     [SCOPE_MONTH]: thisMonth === thatMonth,
-    [SCOPE_TOTAL]: true
+    [SCOPE_HISTORICAL]: true
   }[scope];
 };
 

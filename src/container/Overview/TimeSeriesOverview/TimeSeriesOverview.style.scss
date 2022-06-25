@@ -1,0 +1,18 @@
+@import 'config/theme.scss';
+
+.field .label {
+  color: $beige-light;
+}
+
+.historical-data-wrapper {
+  height: 200px;
+}
+
+.field .control .icon.has-text-grey-dark {
+  color: $grey-dark;
+}
+
+.selection-wrapper {
+  display: flex;
+  gap: 1rem;
+}
