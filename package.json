@@ -1,6 +1,6 @@
 {
   "name": "eco2rd",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "dependencies": {
     "@nivo/bar": "^0.74.0",
