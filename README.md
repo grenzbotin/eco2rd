@@ -43,7 +43,7 @@ The project homepage can be found here: https://www.ecord.info
 | 🇪🇪 | Estonia | 2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)
 | 🇫🇮 | Finland | 2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)
 | 🇫🇷 | France | 2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)
-| 🇬🇧 | UK |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_UK.pdf)|
+| 🇬🇧 | UK |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021UK.pdf)|
 | 🇩🇪 | Germany | 2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)
 | 🇬🇷 | Greece | 2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)
 | 🇭🇺 | Hungary | 2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)
@@ -62,27 +62,27 @@ The project homepage can be found here: https://www.ecord.info
 | 🇪🇸 | Spain | 2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)
 | 🇸🇪 | Sweden | 2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)
 |Others
-| 🇦🇷 | Argentina |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Argentina.pdf)|
-| 🇦🇺 | Australia |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Australia.pdf)|
-| 🇧🇷 | Brazil |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Brazil.pdf)|
-| 🇨🇦 | Canada |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Canada.pdf)|
-| 🇨🇳 | China |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_China.pdf)|
-| 🇮🇳 | India |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_India.pdf)|
-| 🇮🇩 | Indonesia |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Indonesia.pdf)|
-| 🇯🇵 | Japan |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Japan.pdf)|
-| 🇲🇽 | Mexico |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Mexico.pdf)|
-| 🇷🇺 | Russia |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Russia.pdf)|
-| 🇸🇦 | Saudi Arabia |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_SaudiArabia.pdf)|
-| 🇿🇦 | South Africa |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_South_Africa.pdf)|
-| 🇰🇷 | South Korea |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_South_Korea.pdf)|
-| 🇹🇷 | Turkey |  2018 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Turkey.pdf)|
+| 🇦🇷 | Argentina |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021Australia.pdf)|
+| 🇦🇺 | Australia |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_Australia.pdf)|
+| 🇧🇷 | Brazil |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021Brazil.pdf)|
+| 🇨🇦 | Canada |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021Canada.pdf)|
+| 🇨🇳 | China |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021China.pdf)|
+| 🇮🇳 | India |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021India.pdf)|
+| 🇮🇩 | Indonesia |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021Indonesia.pdf)|
+| 🇯🇵 | Japan |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021Japan.pdf)|
+| 🇲🇽 | Mexico |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021Mexico.pdf)|
+| 🇷🇺 | Russia |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021Russia.pdf)|
+| 🇸🇦 | Saudi Arabia |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021SaudiArabia.pdf)|
+| 🇿🇦 | South Africa |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021SouthAfrica.pdf)|
+| 🇰🇷 | South Korea |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021SouthKorea.pdf)|
+| 🇹🇷 | Turkey |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021Turkey.pdf)|
 
 
 ##### Regions
 | Flag  | Region  | Year | Source |
 | ------| ---------| ---- | ------ |
 | 🇪🇺 | Europe (EU-27) |  2020 | [Link](https://www.eea.europa.eu/data-and-maps/daviz/co2-emission-intensity-9#tab-googlechartid_googlechartid_googlechartid_chart_1111)|
-| 🇺🇸 | USA |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2019/11/B2G_2019_USA.pdf)|
+| 🇺🇸 | USA |  2020 | [Link](https://www.climate-transparency.org/wp-content/uploads/2021/10/CT2021USA.pdf)|
 | 🌎 | World |  2018 | [Link](https://www.iea.org/reports/global-energy-co2-status-report-2019/emissions)|
 
 
